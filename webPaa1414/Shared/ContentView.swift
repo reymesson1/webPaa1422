@@ -19,14 +19,26 @@ struct ContentView: View {
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
+//    @State private var loader: (@escaping (UIImage?) -> Void) -> Void
+    @State private var image: UIImage?
+
+    var imageToShow: UIImage {
+      if let loadedImage = image {
+        return loadedImage
+      } else {
+        return UIImage(named: "foodPlaceholder")!
+      }
+    }
 
     var body: some View {
+        
+        
 
         NavigationView{
             
             List{
                 
-                ForEach(viewModel.items, id: \.id){ item in
+                ForEach(viewModel.items, id: \.name){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
 
                     Text("Hello, world!")

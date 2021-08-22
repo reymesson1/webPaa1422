@@ -9,9 +9,12 @@ import Foundation
 import SwiftUI
 
 class ViewModel: ObservableObject{
-    @Published var items = [PostModel]()
-    
+    @Published var items = [ImageModel]()
+//    @Published var items = [PostModel]()
+
+//    let prefixUrl = "http://143.198.171.44:8085"
     let prefixUrl = "http://10.0.0.221:8085"
+
     
     init() {
         fetchPosts()
@@ -63,8 +66,9 @@ class ViewModel: ObservableObject{
     
     func fetchPosts(){
         
-        guard let url = URL(string: "\(prefixUrl)/posts") else{
-            
+        guard let url = URL(string: "\(prefixUrl)/restaurants") else{
+//        guard let url = URL(string: "\(prefixUrl)/posts") else{
+
             print("Not found url")
             return
         }
@@ -81,9 +85,9 @@ class ViewModel: ObservableObject{
                 
                 if let data = data{
                     
-                    let result = try JSONDecoder().decode(DataModel.self, from: data)
+                    let result = try JSONDecoder().decode(Restaurant.self, from: data)
                     DispatchQueue.main.async {
-                        self.items = result.data
+                        self.items = result.images
                         
                     }
                 }else{
