@@ -11,7 +11,7 @@ import SwiftUI
 struct webPaa1414App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(ViewModel())
+            ContentView().environmentObject(RestaurantDetailViewModel( restaurant: PostModel ))
         }
     }
 }

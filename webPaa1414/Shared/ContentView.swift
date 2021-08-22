@@ -19,14 +19,17 @@ struct ContentView: View {
 
 struct HomeView: View {
     @EnvironmentObject var viewModel: ViewModel
+//    let viewModel: RestaurantDetailViewModel
 
     var body: some View {
 
         NavigationView{
             
             List{
-                
-                ForEach(viewModel.items, id: \.id){ item in
+
+                ForEach(viewModel., id: \.id){ item in
+
+//                ForEach(viewModel.items, id: \.id){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
 
                     Text("Hello, world!")
