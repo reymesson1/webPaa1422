@@ -11,7 +11,11 @@ import SwiftUI
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     
-    let prefixUrl = "http://localhost:3000"
+    let prefixUrl = "http://10.0.0.221:8085"
+    
+    init() {
+        fetchPosts()
+    }
     
     func createPosts(parameters: [String:Any]){
         

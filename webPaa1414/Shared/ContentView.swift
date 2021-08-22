@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
 
         HomeView()
@@ -17,14 +18,17 @@ struct ContentView: View {
 }
 
 struct HomeView: View {
+    @EnvironmentObject var viewModel: ViewModel
+
     var body: some View {
 
         NavigationView{
             
             List{
                 
-                ForEach(0 ..< 5, id: \.self){ item in
-                    
+                ForEach(viewModel.items, id: \.id){ item in
+//                    ForEach(0 ..< 5, id: \.self){ item in
+
                     Text("Hello, world!")
                         .padding()
 
