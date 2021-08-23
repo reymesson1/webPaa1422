@@ -19,6 +19,10 @@
 		52333FD726A499BB00B5EC15 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FD526A499BB00B5EC15 /* Models.swift */; };
 		52333FDD26A49A9100B5EC15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FDC26A49A9100B5EC15 /* ViewModel.swift */; };
 		52333FDE26A49A9100B5EC15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FDC26A49A9100B5EC15 /* ViewModel.swift */; };
+		52E82DD526D2FDCB00E66E69 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82DD426D2FDCB00E66E69 /* ImageCacheService.swift */; };
+		52E82DD626D2FDCB00E66E69 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82DD426D2FDCB00E66E69 /* ImageCacheService.swift */; };
+		52E82DDC26D3068D00E66E69 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82DDB26D3068D00E66E69 /* ImageViewModel.swift */; };
+		52E82DDD26D3068D00E66E69 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82DDB26D3068D00E66E69 /* ImageViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,8 @@
 		52333FB126A4715B00B5EC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52333FD526A499BB00B5EC15 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		52333FDC26A49A9100B5EC15 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		52E82DD426D2FDCB00E66E69 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		52E82DDB26D3068D00E66E69 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,8 @@
 				52333F8B26A4715B00B5EC15 /* Assets.xcassets */,
 				52333FD526A499BB00B5EC15 /* Models.swift */,
 				52333FDC26A49A9100B5EC15 /* ViewModel.swift */,
+				52E82DD426D2FDCB00E66E69 /* ImageCacheService.swift */,
+				52E82DDB26D3068D00E66E69 /* ImageViewModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -317,9 +325,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52333FD626A499BB00B5EC15 /* Models.swift in Sources */,
+				52E82DDC26D3068D00E66E69 /* ImageViewModel.swift in Sources */,
 				52333FB426A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDD26A49A9100B5EC15 /* ViewModel.swift in Sources */,
 				52333FB226A4715B00B5EC15 /* webPaa1414App.swift in Sources */,
+				52E82DD526D2FDCB00E66E69 /* ImageCacheService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,9 +338,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				52333FD726A499BB00B5EC15 /* Models.swift in Sources */,
+				52E82DDD26D3068D00E66E69 /* ImageViewModel.swift in Sources */,
 				52333FB526A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDE26A49A9100B5EC15 /* ViewModel.swift in Sources */,
 				52333FB326A4715B00B5EC15 /* webPaa1414App.swift in Sources */,
+				52E82DD626D2FDCB00E66E69 /* ImageCacheService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,4 +20,5 @@ struct PostModel : Decodable {
     let id: String
     let title: String
     let post: String
+    let imageName: [String]
 }
