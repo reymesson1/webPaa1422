@@ -48,6 +48,8 @@ class ViewModel: ObservableObject{
                     DispatchQueue.main.async {
                         
                         print(result)
+                        self.items = result.data
+
                     }
                 }else{
                     print("No data")

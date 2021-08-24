@@ -80,17 +80,27 @@ struct FilterView: View {
             VStack{
                 
                 VStack{
-                    HStack {
-                        cell(header: "Bracelet", text: "36", color: Color.orange)
-                        cell(header: "Rings", text: "74", color: Color.red)
-                        cell(header: "Necklace", text: "51", color: Color.gray)
+                    List{
+                        
+                        ForEach(viewModel.items, id: \.id){ item in
+        //                    ForEach(0 ..< 5, id: \.self){ item in
+
+                                cell(header: "Bracelet", text: "36", color: Color.orange)
+
+                        }
                     }
-                    
-                    HStack {
-                        cell(header: "Pendant", text: "7", color: Color.green)
-                        cell(header: "Anklet", text: "18", color: Color.blue)
-                        cell(header: "Belly Chain", text: "12", color: Color.purple)
-                    }
+
+//                    HStack {
+//                        cell(header: "Bracelet", text: "36", color: Color.orange)
+//                        cell(header: "Rings", text: "74", color: Color.red)
+//                        cell(header: "Necklace", text: "51", color: Color.gray)
+//                    }
+//
+//                    HStack {
+//                        cell(header: "Pendant", text: "7", color: Color.green)
+//                        cell(header: "Anklet", text: "18", color: Color.blue)
+//                        cell(header: "Belly Chain", text: "12", color: Color.purple)
+//                    }
                 }
                 
             }
