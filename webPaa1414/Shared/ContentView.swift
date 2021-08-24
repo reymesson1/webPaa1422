@@ -35,7 +35,7 @@ struct ContentView: View {
                     }
 
                     HomeView()
-                        .frame(height:700)
+                        .frame(height:600)
                     
                 }
 
