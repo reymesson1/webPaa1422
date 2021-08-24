@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     @State var text = ""
+    @State var title = ""
     @State private var titleInput: String = ""
     @EnvironmentObject var viewModel : ViewModel
     
@@ -23,10 +24,14 @@ struct FilterView: View {
                     Text("Field by: ")
                     Spacer()
                 }
+//                TextField("Company ", text: $title)
+//                    .padding()
+//                    .background(Color.white)
+//                    .cornerRadius(6)
+//                    .padding(.bottom)
+                
                 Group{
-                    TextField("Company ", text: $text)
-                        .background(Color.white)
-                        .cornerRadius(6)
+                    TextField("Company ", text: $title)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")
                     Text("")
@@ -58,7 +63,7 @@ struct FilterView: View {
                         
 //                        newButton()
                         print("test \(titleInput)")
-                        let parameters: [String: Any] = ["title": "test", "post":"test"]
+                        let parameters: [String: Any] = ["title": title, "post":"test"]
                         viewModel.createPosts(parameters: parameters)
 
                     }
