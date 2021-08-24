@@ -32,7 +32,7 @@ class ViewModel: ObservableObject{
         request.httpBody = data
         request.setValue("application/JSON", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: url){ (data,res, error) in
+        URLSession.shared.dataTask(with: request){ (data,res, error) in
             
             if error != nil{
                 
@@ -47,7 +47,7 @@ class ViewModel: ObservableObject{
                     let result = try JSONDecoder().decode(DataModel.self, from: data)
                     DispatchQueue.main.async {
                         
-                        print(data)
+                        print(result)
                     }
                 }else{
                     print("No data")

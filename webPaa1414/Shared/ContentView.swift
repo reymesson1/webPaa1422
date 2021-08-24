@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var currentState: Bool = true
+    @EnvironmentObject var viewModel : ViewModel
 
     var body: some View {
         
@@ -29,7 +30,7 @@ struct ContentView: View {
 
                     
                     HStack{
-                        NavigationLink("Filter", destination: EmptyView()).padding()
+                        NavigationLink("Filter", destination: FilterView()).padding()
                         Spacer()
                     }
 
