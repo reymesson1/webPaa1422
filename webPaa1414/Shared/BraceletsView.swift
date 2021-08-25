@@ -8,14 +8,22 @@
 import SwiftUI
 
 struct BraceletsView: View {
+
+    @EnvironmentObject var viewModel: ViewModel
+    var id: String
+//    let viewModel: RestaurantDetailViewModel
     
-    @EnvironmentObject var viewModel : ViewModel
-    var selected: Int
+//    init(restaurant: PostModel) {
+//      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+//    }
+
 
     var body: some View {
         VStack{
             List{
-                
+
+//                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+
                 ForEach(viewModel.items, id: \.id){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
 
@@ -58,6 +66,6 @@ func cellBracelets(header: String, text: String, color: Color) -> some View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(selected: 0)
+        BraceletsView(id: "0")
     }
 }

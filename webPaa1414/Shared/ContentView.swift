@@ -91,7 +91,7 @@ func cellBracelet(header: String, text: String, color: Color) -> some View {
                 .resizable()
 
             VStack(alignment: .leading) {
-                NavigationLink("Bracelet", destination: BraceletsView(selected: 0))
+                NavigationLink("Bracelet", destination: BraceletsView(id: header))
                                     .font(.title)
                                     .foregroundColor(Color(.white))
             }
