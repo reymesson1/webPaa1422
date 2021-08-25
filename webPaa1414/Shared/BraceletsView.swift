@@ -17,12 +17,30 @@ struct BraceletsView: View {
 //      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
 //    }
     
+    let imagePlaceholder: String
+//    @EnvironmentObject var viewModel: ViewModel
+    let loader: (@escaping (UIImage?) -> Void) -> Void
+    @State private var image: UIImage?
+
+    
     
     let viewModel: RestaurantDetailViewModel
 
-    init(restaurant: PostModel) {
+    init(restaurant: PostModel, imagePlaceholder: String, loader: (@escaping (UIImage?) -> Void) -> Void ) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+      self.imagePlaceholder = imagePlaceholder
+      self.loader = { closure in
+        closure(UIImage(named: "restaurant1"))} 
     }
+    
+    var imageToShow: UIImage {
+      if let loadedImage = image {
+        return loadedImage
+      } else {
+        return UIImage(named: imagePlaceholder)!
+      }
+    }
+
 
 
 
@@ -75,7 +93,11 @@ func cellBracelets(header:String, loader: @escaping (@escaping (UIImage?) -> Voi
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
 //        BraceletsView(id: "0")
-        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]))
+        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]), imagePlaceholder: "foodPlaceholder"){ closure in
+            closure(UIImage(named: "restaurant1"))} 
+        
+//        ProductDetails(imagePlaceholder: "foodPlaceholder"){ closure in
+//            closure(UIImage(named: "restaurant1"))}
 
     }
 }

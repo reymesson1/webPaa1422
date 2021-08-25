@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var currentState: Bool = true
-    @EnvironmentObject var viewModel : ViewModel
+    @EnvironmentObject var viewModel: ViewModel
 
     var body: some View {
         
@@ -35,9 +35,11 @@ struct ContentView: View {
                     }
                     
                     VStack{
+                        ForEach(viewModel.items, id: \.id){ item in
 
-                        newBody()
-                            .frame(height:600)
+                            newBodyContent(restaurant: item)
+                                .frame(height:600)
+                        }
 
                     }
 
@@ -56,50 +58,29 @@ struct ContentView: View {
     }
 }
 
-struct newBody: View {
-    @EnvironmentObject var viewModel : ViewModel
+struct newBodyContent: View {
+//    @EnvironmentObject var viewModel : ViewModel
+    let viewModel: RestaurantDetailViewModel
+
+    init(restaurant: PostModel) {
+      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+    }
 
     var body: some View {
         
     
         VStack{
             HStack {
-//                cellBracelet(header: "Bracelet", text: "36", color: Color.orange)
-                
-                ForEach(viewModel.items, id: \.id){ item in
-
-                    ZStack {
-                        
-                        Image("bracelets")
-                            .resizable()
-
-                        VStack(alignment: .leading) {
-                              NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
-
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-
-    //                        NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
-                                                .font(.title)
-                                                .foregroundColor(Color(.white))
-                        }
-                        Spacer()
-                    }
-                    .frame(height:200)
-                    .padding(20)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(10)
-                }
-//                cellRing(header: "Rings", text: "74", color: Color.red)
-//                cellNecklace(header: "Necklace", text: "51", color: Color.gray)
+                cellBraceletContent(header: "Bracelet", items: viewModel, text: "36", color: Color.orange)
+                cellRing(header: "Rings", text: "74", color: Color.red)
+                cellNecklace(header: "Necklace", text: "51", color: Color.gray)
             }
             
-//            HStack {
-//                cellPendant(header: "Pendant", text: "7", color: Color.green)
-//                cellCrown(header: "Crown", text: "18", color: Color.blue)
-//                cellGemStone(header: "GemStone", text: "12", color: Color.purple)
-//            }
+            HStack {
+                cellPendant(header: "Pendant", text: "7", color: Color.green)
+                cellCrown(header: "Crown", text: "18", color: Color.blue)
+                cellGemStone(header: "GemStone", text: "12", color: Color.purple)
+            }
             
 //            HStack {
 //                cellPendant(header: "Pendant", text: "7", color: Color.green)
@@ -113,7 +94,10 @@ struct newBody: View {
     }
 }
 
-func cellBracelet(header: String, text: String, color: Color) -> some View {
+func cellBraceletContent(header: String, items: RestaurantDetailViewModel ,text: String, color: Color) -> some View {
+    
+    
+
 
         ZStack {
             
@@ -122,9 +106,16 @@ func cellBracelet(header: String, text: String, color: Color) -> some View {
 
             VStack(alignment: .leading) {
 //                NavigationLink("Bracelet", destination: BraceletsView( restaurant:   ))
-                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
-                                    .font(.title)
-                                    .foregroundColor(Color(.white))
+//                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
+
+//                NavigationLink("Bracelet", destination: CategoryView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""])))
+                
+                ForEach(items.getImageItems(), id: \.id){ item in
+
+                    NavigationLink("Bracelet", destination: CategoryView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]), imagePlaceholder: item.placeholder,loader: item.loader) )
+                                        .font(.title)
+                                        .foregroundColor(Color(.white))
+                }
             }
             Spacer()
         }
