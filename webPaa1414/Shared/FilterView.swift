@@ -117,7 +117,7 @@ func cell(header: String, text: String, color: Color) -> some View {
         HStack {
 
             VStack(alignment: .leading) {
-                NavigationLink("Show", destination: ProductDetails(id: header))
+//                NavigationLink("Show", destination: ProductDetails(id: header))
 
                 Text(header)
                     .font(.title)
