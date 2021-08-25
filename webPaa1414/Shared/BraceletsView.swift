@@ -9,28 +9,36 @@ import SwiftUI
 
 struct BraceletsView: View {
 
-    @EnvironmentObject var viewModel: ViewModel
-    var id: String
+//    @EnvironmentObject var viewModel: ViewModel
+//    var id: String
 //    let viewModel: RestaurantDetailViewModel
     
 //    init(restaurant: PostModel) {
 //      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
 //    }
+    
+    
+    let viewModel: RestaurantDetailViewModel
+
+    init(restaurant: PostModel) {
+      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+    }
+
 
 
     var body: some View {
         VStack{
             List{
 
-//                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
 
-                ForEach(viewModel.items, id: \.id){ item in
+//                ForEach(viewModel.items, id: \.id){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
 
 //                    Text("test")
 //                        cell(header: "Bracelet", text: "36", color: Color.orange)
                     VStack {
-                        cellBracelets(header: item.description, text: "36", color: Color.orange)
+                        cellBracelets(header: imageVM.placeholder, text: "36", color: Color.orange)
 //                        cell(header: "Rings", text: "74", color: Color.red)
 //                        cell(header: "Necklace", text: "51", color: Color.gray)
                     }
@@ -66,6 +74,8 @@ func cellBracelets(header: String, text: String, color: Color) -> some View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(id: "0")
+//        BraceletsView(id: "0")
+        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", images: ["",""]))
+
     }
 }
