@@ -20,7 +20,7 @@ struct ProductDetails: View {
                 Spacer()
             }
             VStack{
-                Text("image")
+                NavigationLink("Image", destination: ProductZoom(id:id))
             }
             VStack{
                 HStack{

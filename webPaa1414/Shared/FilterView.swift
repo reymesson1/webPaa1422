@@ -86,7 +86,7 @@ struct FilterView: View {
                         ForEach(viewModel.items, id: \.id){ item in
         //                    ForEach(0 ..< 5, id: \.self){ item in
 
-                                cell(header: "Bracelet", text: "36", color: Color.orange)
+                            cell(header: item.description, text: "36", color: Color.orange)
 
                         }
                     }
@@ -117,7 +117,7 @@ func cell(header: String, text: String, color: Color) -> some View {
         HStack {
 
             VStack(alignment: .leading) {
-                NavigationLink("Show", destination: EmptyView())
+                NavigationLink("Show", destination: ProductDetails(id: header))
 
                 Text(header)
                     .font(.title)

@@ -27,6 +27,8 @@
 		52E82E6726D5B83E00E66E69 /* BraceletsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E6526D5B83E00E66E69 /* BraceletsView.swift */; };
 		52E82E6D26D5BC4F00E66E69 /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */; };
 		52E82E6E26D5BC4F00E66E69 /* ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */; };
+		52E82E7426D5BF3500E66E69 /* ProductZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E7326D5BF3500E66E69 /* ProductZoom.swift */; };
+		52E82E7526D5BF3500E66E69 /* ProductZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E7326D5BF3500E66E69 /* ProductZoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,7 @@
 		52E82E5526D575DF00E66E69 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		52E82E6526D5B83E00E66E69 /* BraceletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletsView.swift; sourceTree = "<group>"; };
 		52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetails.swift; sourceTree = "<group>"; };
+		52E82E7326D5BF3500E66E69 /* ProductZoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductZoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,7 @@
 				52E82E5526D575DF00E66E69 /* FilterView.swift */,
 				52E82E6526D5B83E00E66E69 /* BraceletsView.swift */,
 				52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */,
+				52E82E7326D5BF3500E66E69 /* ProductZoom.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -335,6 +339,7 @@
 				52333FD626A499BB00B5EC15 /* Models.swift in Sources */,
 				52333FB426A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDD26A49A9100B5EC15 /* ViewModel.swift in Sources */,
+				52E82E7426D5BF3500E66E69 /* ProductZoom.swift in Sources */,
 				52E82E4F26D53C2300E66E69 /* HomeView.swift in Sources */,
 				52E82E6626D5B83E00E66E69 /* BraceletsView.swift in Sources */,
 				52E82E5626D575E000E66E69 /* FilterView.swift in Sources */,
@@ -350,6 +355,7 @@
 				52333FD726A499BB00B5EC15 /* Models.swift in Sources */,
 				52333FB526A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDE26A49A9100B5EC15 /* ViewModel.swift in Sources */,
+				52E82E7526D5BF3500E66E69 /* ProductZoom.swift in Sources */,
 				52E82E5026D53C2300E66E69 /* HomeView.swift in Sources */,
 				52E82E6726D5B83E00E66E69 /* BraceletsView.swift in Sources */,
 				52E82E5726D575E000E66E69 /* FilterView.swift in Sources */,
