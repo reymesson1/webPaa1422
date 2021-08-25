@@ -38,8 +38,8 @@ final class RestaurantDetailViewModel {
 //        print($0)
         RestaurantImageViewModel(
             placeholder: "foodPlaceholder",
-            imageData: $0,
-            loader: getLoader(for: $0)
+            imageData: $0.image,
+            loader: getLoader(for: $0.image)
         )
     }
   }

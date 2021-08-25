@@ -75,7 +75,7 @@ func cellBracelets(header:String, loader: @escaping (@escaping (UIImage?) -> Voi
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
 //        BraceletsView(id: "0")
-        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]))
+        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", category: "", image: "", images: [ImageModel(id: "", description: "", company: "", category: "", image: "", images: ["",""])]))
 
     }
 }

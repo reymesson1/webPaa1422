@@ -74,7 +74,7 @@ struct newBody: View {
                             .resizable()
 
                         VStack(alignment: .leading) {
-                              NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
+                            NavigationLink(item.category, destination: BraceletsView( restaurant:  item ))
 
 //                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
 //                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
@@ -122,7 +122,7 @@ func cellBracelet(header: String, text: String, color: Color) -> some View {
 
             VStack(alignment: .leading) {
 //                NavigationLink("Bracelet", destination: BraceletsView( restaurant:   ))
-                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
+                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", category: "Category1", image: "rings-new-water-point-Style1-0.jpg", images: [ImageModel(id: "", description: "", company: "", category: "", image: "", images: ["",""])]  )  ))
                                     .font(.title)
                                     .foregroundColor(Color(.white))
             }
