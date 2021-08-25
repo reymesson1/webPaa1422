@@ -35,6 +35,7 @@ final class RestaurantDetailViewModel {
   
   func getImageItems() -> [RestaurantImageViewModel] {
     return restaurant.images.map {
+//        print($0)
         RestaurantImageViewModel(
             placeholder: "foodPlaceholder",
             imageData: $0,

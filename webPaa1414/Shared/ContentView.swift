@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var currentState: Bool = true
-    @EnvironmentObject var viewModel : ViewModel
+//    @EnvironmentObject var viewModel : ViewModel
 
     var body: some View {
         
@@ -57,7 +57,10 @@ struct ContentView: View {
 }
 
 struct newBody: View {
+//    @EnvironmentObject var viewModel : ViewModel
+
     var body: some View {
+        
     
         VStack{
             HStack {
@@ -85,13 +88,16 @@ struct newBody: View {
 }
 
 func cellBracelet(header: String, text: String, color: Color) -> some View {
+//    let viewModel : ViewModel
+
         ZStack {
             
             Image("bracelets")
                 .resizable()
 
             VStack(alignment: .leading) {
-                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "", description: "", company: "", images: ["",""])  ))
+//                NavigationLink("Bracelet", destination: BraceletsView( restaurant:   ))
+                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
                                     .font(.title)
                                     .foregroundColor(Color(.white))
             }

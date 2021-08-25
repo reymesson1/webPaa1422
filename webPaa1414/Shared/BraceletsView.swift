@@ -38,7 +38,7 @@ struct BraceletsView: View {
 //                    Text("test")
 //                        cell(header: "Bracelet", text: "36", color: Color.orange)
                     VStack {
-                        cellBracelets(header: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
+                        cellBracelets(header: imageVM.imageData,loader: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
 //                        cell(header: "Rings", text: "74", color: Color.red)
 //                        cell(header: "Necklace", text: "51", color: Color.gray)
                     }
@@ -49,15 +49,15 @@ struct BraceletsView: View {
     }
 }
 
-func cellBracelets(header: @escaping (@escaping (UIImage?) -> Void) -> Void,placeholder:String, text: String, color: Color) -> some View {
+func cellBracelets(header:String, loader: @escaping (@escaping (UIImage?) -> Void) -> Void,placeholder:String, text: String, color: Color) -> some View {
         HStack {
 
             HStack {
-                NavigationLink("Show", destination: ProductDetails(imagePlaceholder: placeholder, loader: header))
+                NavigationLink("Show", destination: ProductDetails(imagePlaceholder: placeholder, loader: loader))
 
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
+                Text(header)
+                    .font(.title)
+                    .fontWeight(.bold)
                 Text(text)
                     .fontWeight(.semibold)
             }
@@ -75,7 +75,7 @@ func cellBracelets(header: @escaping (@escaping (UIImage?) -> Void) -> Void,plac
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
 //        BraceletsView(id: "0")
-        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", images: ["",""]))
+        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]))
 
     }
 }
