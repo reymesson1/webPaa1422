@@ -9,7 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var currentState: Bool = true
-    @EnvironmentObject var viewModel : ViewModel
+//    @EnvironmentObject var viewModel : ViewModel
+    
+    let viewModel: RestaurantDetailViewModel
+
+    init(restaurant: PostModel) {
+      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+    }
+
 
     var body: some View {
         
@@ -36,8 +43,13 @@ struct ContentView: View {
                     
                     VStack{
 
-                        newBody()
-                            .frame(height:600)
+//                        newBody()
+//                            .frame(height:600)
+                        
+                        ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                        
+                            Text(imageVM.placeholder)
+                        }
 
                     }
 
@@ -348,6 +360,6 @@ struct newHeader: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: [""]))
     }
 }
