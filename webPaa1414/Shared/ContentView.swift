@@ -36,7 +36,7 @@ struct ContentView: View {
                     
                     VStack{
 
-                        newBody()
+                        newBody(restaurant: viewModel.items)
                             .frame(height:600)
 
                     }
@@ -58,6 +58,11 @@ struct ContentView: View {
 
 struct newBody: View {
     @EnvironmentObject var viewModel : ViewModel
+    let viewModelImage: RestaurantDetailViewModel
+
+    init(restaurant: PostModel) {
+      self.viewModelImage = RestaurantDetailViewModel(restaurant: restaurant)
+    }
 
     var body: some View {
         
@@ -66,209 +71,59 @@ struct newBody: View {
             HStack {
 //                cellBracelet(header: "Bracelet", text: "36", color: Color.orange)
                 
-                ForEach(viewModel.items, id: \.id){ item in
+//                ForEach(viewModel.items, id: \.id){ item in
+                ForEach(viewModelImage.getImageItems(), id: \.id){ item in
 
-                    ZStack {
-                        
-                        Image("bracelets")
-                            .resizable()
+                    if(item.id == "1629658342738" ){
+                        ZStack {
+                            Image("bracelets")
+                                .resizable()
 
-                        VStack(alignment: .leading) {
-                              NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
-
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-
-    //                        NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
-                                                .font(.title)
-                                                .foregroundColor(Color(.white))
+                            VStack(alignment: .leading) {
+                                  NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                        .frame(height:200)
+                        .padding(20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(10)
+                    }else if(item.id == "1629842204399"){
+                        
+                        ZStack {
+                            Image("necklaces")
+                                .resizable()
+
+                            VStack(alignment: .leading) {
+                                  NavigationLink("Necklaces", destination: BraceletsView( restaurant:  item ))
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                            }
+                            Spacer()
+                        }
+                        .frame(height:200)
+                        .padding(20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(10)
+                        
+                        
                     }
-                    .frame(height:200)
-                    .padding(20)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(10)
+                    
+                    
                 }
-//                cellRing(header: "Rings", text: "74", color: Color.red)
-//                cellNecklace(header: "Necklace", text: "51", color: Color.gray)
             }
             
-//            HStack {
-//                cellPendant(header: "Pendant", text: "7", color: Color.green)
-//                cellCrown(header: "Crown", text: "18", color: Color.blue)
-//                cellGemStone(header: "GemStone", text: "12", color: Color.purple)
-//            }
-            
-//            HStack {
-//                cellPendant(header: "Pendant", text: "7", color: Color.green)
-//                cellCrown(header: "Crown", text: "18", color: Color.blue)
-//                cellGemStone(header: "GemStone", text: "12", color: Color.purple)
-//            }
-
         }
         
         
     }
 }
 
-func cellBracelet(header: String, text: String, color: Color) -> some View {
 
-        ZStack {
-            
-            Image("bracelets")
-                .resizable()
-
-            VStack(alignment: .leading) {
-//                NavigationLink("Bracelet", destination: BraceletsView( restaurant:   ))
-                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
-                                    .font(.title)
-                                    .foregroundColor(Color(.white))
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
-
-func cellRing(header: String, text: String, color: Color) -> some View {
-        ZStack {
-            
-            Image("rings")
-                .resizable()
-
-            VStack(alignment: .leading) {
-                NavigationLink("Ring", destination: EmptyView())
-                    .font(.title)
-                    .foregroundColor(Color(.white))
-
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(color)
-//                Text(text)
-//                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
-
-func cellNecklace(header: String, text: String, color: Color) -> some View {
-        ZStack {
-            
-            Image("necklaces")
-                .resizable()
-
-            VStack(alignment: .leading) {
-                NavigationLink("Neck lace", destination: EmptyView())
-                    .font(.title)
-                    .foregroundColor(Color(.white))
-
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(color)
-//                Text(text)
-//                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
-
-func cellPendant(header: String, text: String, color: Color) -> some View {
-        ZStack {
-            
-            Image("pendant")
-                .resizable()
-
-            VStack(alignment: .leading) {
-                NavigationLink("Pendant", destination: EmptyView())
-                    .font(.title)
-                    .foregroundColor(Color(.white))
-
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(color)
-//                Text(text)
-//                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
-
-func cellCrown(header: String, text: String, color: Color) -> some View {
-        ZStack {
-            
-            Image("crowns")
-                .resizable()
-
-            VStack(alignment: .leading) {
-                NavigationLink("Crown", destination: EmptyView())
-                    .font(.title)
-                    .foregroundColor(Color(.white))
-
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(color)
-//                Text(text)
-//                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
-
-func cellGemStone(header: String, text: String, color: Color) -> some View {
-        ZStack {
-            
-            Image("gemstones")
-                .resizable()
-
-            VStack(alignment: .leading) {
-                NavigationLink("Gem Stone", destination: EmptyView())
-                    .font(.title)
-                    .foregroundColor(Color(.white))
-
-//                Text(header)
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .foregroundColor(color)
-//                Text(text)
-//                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
-}
 
 struct newHeader: View {
     var body: some View {

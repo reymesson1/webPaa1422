@@ -20,6 +20,7 @@ struct PostModel : Decodable {
     let id: String
     let description: String
     let company: String
+    let category: String
     let image: String
     let images: [String]
 
