@@ -9,28 +9,20 @@ import SwiftUI
 
 struct BraceletsView: View {
 
-//    @EnvironmentObject var viewModel: ViewModel
-//    var id: String
-//    let viewModel: RestaurantDetailViewModel
-    
-//    init(restaurant: PostModel) {
-//      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
-//    }
-    
-    
     let viewModel: RestaurantDetailViewModel
 
     init(restaurant: PostModel) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
     }
 
-
-
     var body: some View {
         VStack{
             List{
 
                 ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                    
+//                    ProductItem(imagePlaceholder: viewModel.)
+                    ProductItem(imagePlaceholder: imageVM.placeholder, loader: imageVM.loader )
 
 //                ForEach(viewModel.items, id: \.id){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
@@ -38,7 +30,7 @@ struct BraceletsView: View {
 //                    Text("test")
 //                        cell(header: "Bracelet", text: "36", color: Color.orange)
                     VStack {
-                        cellBracelets(header: imageVM.imageData,loader: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
+//                        cellBracelets(header: imageVM.imageData,loader: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
 //                        cell(header: "Rings", text: "74", color: Color.red)
 //                        cell(header: "Necklace", text: "51", color: Color.gray)
                     }

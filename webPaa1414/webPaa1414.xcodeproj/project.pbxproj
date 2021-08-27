@@ -19,6 +19,8 @@
 		52333FD726A499BB00B5EC15 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FD526A499BB00B5EC15 /* Models.swift */; };
 		52333FDD26A49A9100B5EC15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FDC26A49A9100B5EC15 /* ViewModel.swift */; };
 		52333FDE26A49A9100B5EC15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FDC26A49A9100B5EC15 /* ViewModel.swift */; };
+		5257EF6626D9A1E600D702E3 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257EF6526D9A1E600D702E3 /* ProductItem.swift */; };
+		5257EF6726D9A1E600D702E3 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257EF6526D9A1E600D702E3 /* ProductItem.swift */; };
 		52E82E4F26D53C2300E66E69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E4E26D53C2300E66E69 /* HomeView.swift */; };
 		52E82E5026D53C2300E66E69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E4E26D53C2300E66E69 /* HomeView.swift */; };
 		52E82E5626D575E000E66E69 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E5526D575DF00E66E69 /* FilterView.swift */; };
@@ -69,6 +71,7 @@
 		52333FB126A4715B00B5EC15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52333FD526A499BB00B5EC15 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		52333FDC26A49A9100B5EC15 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		5257EF6526D9A1E600D702E3 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		52E82E4E26D53C2300E66E69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		52E82E5526D575DF00E66E69 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		52E82E6526D5B83E00E66E69 /* BraceletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletsView.swift; sourceTree = "<group>"; };
@@ -125,6 +128,7 @@
 		52333F8826A4715800B5EC15 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				5257EF6026D9A18E00D702E3 /* RenderProduct */,
 				52333F8926A4715800B5EC15 /* webPaa1414App.swift */,
 				52333F8A26A4715800B5EC15 /* ContentView.swift */,
 				52333F8B26A4715B00B5EC15 /* Assets.xcassets */,
@@ -132,7 +136,6 @@
 				52333FDC26A49A9100B5EC15 /* ViewModel.swift */,
 				52E82E4E26D53C2300E66E69 /* HomeView.swift */,
 				52E82E5526D575DF00E66E69 /* FilterView.swift */,
-				52E82E6526D5B83E00E66E69 /* BraceletsView.swift */,
 				52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */,
 				52E82E7326D5BF3500E66E69 /* ProductZoom.swift */,
 				52E82E8226D5D18000E66E69 /* ImageCacheService.swift */,
@@ -185,6 +188,15 @@
 				52333FB126A4715B00B5EC15 /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		5257EF6026D9A18E00D702E3 /* RenderProduct */ = {
+			isa = PBXGroup;
+			children = (
+				52E82E6526D5B83E00E66E69 /* BraceletsView.swift */,
+				5257EF6526D9A1E600D702E3 /* ProductItem.swift */,
+			);
+			path = RenderProduct;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5257EF6626D9A1E600D702E3 /* ProductItem.swift in Sources */,
 				52333FD626A499BB00B5EC15 /* Models.swift in Sources */,
 				52333FB426A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDD26A49A9100B5EC15 /* ViewModel.swift in Sources */,
@@ -362,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5257EF6726D9A1E600D702E3 /* ProductItem.swift in Sources */,
 				52333FD726A499BB00B5EC15 /* Models.swift in Sources */,
 				52333FB526A4715B00B5EC15 /* ContentView.swift in Sources */,
 				52333FDE26A49A9100B5EC15 /* ViewModel.swift in Sources */,
