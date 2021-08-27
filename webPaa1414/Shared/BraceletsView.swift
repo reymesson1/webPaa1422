@@ -17,13 +17,27 @@ struct BraceletsView: View {
 //      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
 //    }
     
+    let imagePlaceholder: String
+    let loader: (@escaping (UIImage?) -> Void) -> Void
+    @State private var image: UIImage?
+
     
     let viewModel: RestaurantDetailViewModel
 
-    init(restaurant: PostModel) {
+    init(restaurant: PostModel, imagePlaceholder: String, loader: (@escaping (UIImage?) -> Void) -> Void ) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+      self.imagePlaceholder = imagePlaceholder
+      self.loader = { closure in
+        closure(UIImage(named: "foodPlaceholder"))}
     }
-
+    
+    var imageToShow: UIImage {
+      if let loadedImage = image {
+        return loadedImage
+      } else {
+        return UIImage(named: imagePlaceholder)!
+      }
+    }
 
 
     var body: some View {
@@ -31,17 +45,27 @@ struct BraceletsView: View {
             List{
 
                 ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                    
+                    Image(uiImage: imageToShow)
+                      .resizable()
+                      .aspectRatio(contentMode: .fill)
+                      .onAppear {
+                        loader {
+                            self.image = $0
+                        }
+                      }
+
 
 //                ForEach(viewModel.items, id: \.id){ item in
 //                    ForEach(0 ..< 5, id: \.self){ item in
 
 //                    Text("test")
 //                        cell(header: "Bracelet", text: "36", color: Color.orange)
-                    VStack {
-                        cellBracelets(header: imageVM.imageData,loader: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
+//                    VStack {
+//                        cellBracelets(header: imageVM.imageData,loader: imageVM.loader,placeholder: imageVM.placeholder , text: "36", color: Color.orange)
 //                        cell(header: "Rings", text: "74", color: Color.red)
 //                        cell(header: "Necklace", text: "51", color: Color.gray)
-                    }
+//                    }
                 }
             }
         }
@@ -75,7 +99,8 @@ func cellBracelets(header:String, loader: @escaping (@escaping (UIImage?) -> Voi
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
 //        BraceletsView(id: "0")
-        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]))
+        BraceletsView(restaurant: PostModel(id: "", description: "", company: "", image: "", images: ["",""]), imagePlaceholder: "imagePlaceholder", loader: { closure in
+                        closure(UIImage(named: "foodPlaceholder"))})
 
     }
 }

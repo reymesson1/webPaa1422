@@ -67,30 +67,30 @@ struct newBody: View {
 //                cellBracelet(header: "Bracelet", text: "36", color: Color.orange)
                 
                 ForEach(viewModel.items, id: \.id){ item in
+                    if(item.id == "1629658342738"){
+                        ZStack {
+                            Image("bracelets")
+                                .resizable()
+                            Text(item.id)
+                            VStack(alignment: .leading) {
+//                                  NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item,  ))
+                                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ), imagePlaceholder: "foodPlaceholder",  )
 
-                    ZStack {
-                        
-                        Image("bracelets")
-                            .resizable()
-
-                        VStack(alignment: .leading) {
-                              NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
-
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-//                            NavigationLink("Bracelet", destination: BraceletsView( restaurant:  PostModel(id: "", description: "", company: "", image: "", images: ["",""]) ))
-
-    //                        NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
-                                                .font(.title)
-                                                .foregroundColor(Color(.white))
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                            }
+                            Spacer()
                         }
-                        Spacer()
+                        .frame(height:200)
+                        .padding(20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(10)
+                        
                     }
-                    .frame(height:200)
-                    .padding(20)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .padding(10)
                 }
+                
+                
 //                cellRing(header: "Rings", text: "74", color: Color.red)
 //                cellNecklace(header: "Necklace", text: "51", color: Color.gray)
             }
@@ -122,7 +122,7 @@ func cellBracelet(header: String, text: String, color: Color) -> some View {
 
             VStack(alignment: .leading) {
 //                NavigationLink("Bracelet", destination: BraceletsView( restaurant:   ))
-                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
+//                NavigationLink("Bracelet", destination: BraceletsView( restaurant: PostModel(id: "1629658342738", description: "rings-new-water-point", company: "Company1", image: "rings-new-water-point-Style1-0.jpg", images: ["rings-new-water-point-Style1-0.jpg","rings-new-water-point-Style1-0.jpg"])  ))
                                     .font(.title)
                                     .foregroundColor(Color(.white))
             }
