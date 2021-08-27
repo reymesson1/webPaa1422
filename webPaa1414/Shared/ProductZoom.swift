@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ProductZoom: View {
-    var id: String
+    let imagePlaceholder: String
+    let loader: (@escaping (UIImage?) -> Void) -> Void
+
+    @State private var image: UIImage?
+
+    var imageToShow: UIImage {
+      if let loadedImage = image {
+        return loadedImage
+      } else {
+        return UIImage(named: imagePlaceholder)!
+      }
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Image(uiImage: imageToShow)
+            .resizable()
+
     }
 }
 
 struct ProductZoom_Previews: PreviewProvider {
     static var previews: some View {
-        ProductZoom(id: "0")
+        ProductZoom(imagePlaceholder: "foodPlaceholder"){ closure in
+            closure(UIImage(named: "restaurant1"))}
     }
 }

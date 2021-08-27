@@ -24,17 +24,19 @@ struct ProductItem: View {
 
     var body: some View {
         
-        Image(uiImage: imageToShow)
-            .resizable()
-            .scaledToFill()
-            .animation(.default)
-            .frame(width: 100, height: 100)
-          .onAppear {
-            loader {
-                self.image = $0
-            }
-          }
-        NavigationLink("Product Details", destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader))
+        
+        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader), label:{
+            Image(uiImage: imageToShow)
+                .resizable()
+                .scaledToFill()
+                .animation(.default)
+                .frame(width: 100, height: 100)
+              .onAppear {
+                loader {
+                    self.image = $0
+                }
+              }
+        })
 //        NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
 
     }

@@ -9,12 +9,10 @@ import SwiftUI
 
 struct ProductDetails: View {
     let imagePlaceholder: String
-//    @EnvironmentObject var viewModel: ViewModel
     let loader: (@escaping (UIImage?) -> Void) -> Void
+
     @State private var image: UIImage?
 
-//    var id: String
-    
     var imageToShow: UIImage {
       if let loadedImage = image {
         return loadedImage
@@ -26,23 +24,22 @@ struct ProductDetails: View {
     var body: some View {
         
         VStack{
-            HStack{
+            VStack{
                 
+                NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
+
                 Image(uiImage: imageToShow)
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
+                    .resizable()
+                    .scaledToFill()
+                    .animation(.default)
+                    .frame(width: 500, height: 500, alignment: .center)
                   .onAppear {
                     loader {
                         self.image = $0
                     }
                   }
-//                Text("\(id)")
-//                .font(.title)
-//                .fontWeight(.bold)
+                })
                 Spacer()
-            }
-            VStack{
-//                NavigationLink("Image", destination: ProductZoom(id:id))
             }
             VStack{
                 HStack{
