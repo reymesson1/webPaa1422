@@ -34,8 +34,9 @@ struct ProductItem: View {
                 self.image = $0
             }
           }
-        
-        
+        NavigationLink("Product Details", destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader))
+//        NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
+
     }
 }
 
