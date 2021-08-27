@@ -25,8 +25,10 @@ struct ProductItem: View {
     var body: some View {
         
         Image(uiImage: imageToShow)
-          .resizable()
-          .aspectRatio(contentMode: .fill)
+            .resizable()
+            .scaledToFill()
+            .animation(.default)
+            .frame(width: 100, height: 100)
           .onAppear {
             loader {
                 self.image = $0
