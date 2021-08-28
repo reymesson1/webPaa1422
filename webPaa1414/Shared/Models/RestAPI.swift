@@ -8,15 +8,10 @@
 import Foundation
 import SwiftUI
 
-protocol ImageViewModel {
-  func getImage(from: String, completion: @escaping (UIImage?) -> Void)
-}
-
-
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
-    @Published var currentState: Bool = false
+    @Published var currentState: Bool = true
 
     let prefixUrl = "http://10.0.0.221:8085"
 //    let prefixUrl = "http://143.198.171.44:8085"
@@ -27,9 +22,9 @@ class ViewModel: ObservableObject{
         fetchOnHiddenMode()
     }
     
-    func fetchOnHiddenMode() -> Bool{
+    func fetchOnHiddenMode(){
         
-       return self.currentState
+       self.currentState = false
 
     }
     
