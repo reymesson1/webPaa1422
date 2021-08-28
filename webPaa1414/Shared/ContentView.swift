@@ -10,6 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @State private var currentState: Bool = true
     @EnvironmentObject var viewModel : ViewModel
+    let viewModelFilter : PostModel
+
+    init() {
+        self.viewModelFilter = viewModel.items
+    }
 
     var body: some View {
         
@@ -30,7 +35,7 @@ struct ContentView: View {
 
                     
                     HStack{
-                        NavigationLink("Filter", destination: FilterView()).padding()
+                        NavigationLink("Filter", destination: FilterView(restaurant: <#T##PostModel#>)).padding()
                         Spacer()
                     }
                     

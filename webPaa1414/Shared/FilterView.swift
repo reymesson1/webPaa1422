@@ -13,7 +13,12 @@ struct FilterView: View {
     @State var companystyle = ""
     @State private var titleInput: String = ""
     @EnvironmentObject var viewModel : ViewModel
-    
+    let viewModelFilter: RestaurantDetailViewModel
+
+    init(restaurant: PostModel) {
+      self.viewModelFilter = RestaurantDetailViewModel(restaurant: restaurant)
+    }
+
 
     var body: some View {
         
