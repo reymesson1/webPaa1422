@@ -70,7 +70,7 @@ struct newBody: View {
                     if(item.id == "0"){
 
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Bracelets" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -90,7 +90,7 @@ struct newBody: View {
                     }else if(item.id == "1"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "RM" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -112,7 +112,7 @@ struct newBody: View {
                     }else if(item.id == "2"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Rings" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -134,7 +134,7 @@ struct newBody: View {
                     }else if(item.id == "3"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pendant" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -167,7 +167,7 @@ struct newBody: View {
                     if(item.id == "4"){
 
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pings" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -187,7 +187,7 @@ struct newBody: View {
                     }else if(item.id == "5"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Necklace" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -209,7 +209,7 @@ struct newBody: View {
                     }else if(item.id == "6"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Earings" ), label:{
 
                                 Image("folder")
                                     .resizable()
@@ -231,7 +231,7 @@ struct newBody: View {
                     }else if(item.id == "7"){
                         
                         ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item ), label:{
+                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Watches" ), label:{
 
                                 Image("folder")
                                     .resizable()

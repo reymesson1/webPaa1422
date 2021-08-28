@@ -12,8 +12,10 @@ class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
 
-    let prefixUrl = "http://10.0.0.221:8085"
-    
+//    let prefixUrl = "http://10.0.0.221:8085"
+    let prefixUrl = "http://143.198.171.44:8085"
+
+
     init() {
         fetchPosts()
     }

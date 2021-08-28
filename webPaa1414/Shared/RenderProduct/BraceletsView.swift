@@ -10,15 +10,17 @@ import SwiftUI
 struct BraceletsView: View {
 
     let viewModel: RestaurantDetailViewModel
+    let category: String
 
-    init(restaurant: PostModel) {
+    init(restaurant: PostModel, category: String) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+      self.category = category
     }
 
     var body: some View {
         VStack{
             HStack{
-                Text("Bracelets").bold()
+                Text(category).bold()
                     .font(.system(size: 26))
                 Spacer()
             }
@@ -38,7 +40,7 @@ struct BraceletsView: View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", image: "")]))
+        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", image: "")]), category: "")
 
     }
 }
