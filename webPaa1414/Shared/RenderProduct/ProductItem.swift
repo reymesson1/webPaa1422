@@ -12,6 +12,7 @@ struct ProductItem: View {
     let imagePlaceholder: String
     
     let descriptionPlaceholder: String
+    let companyPlaceholder: String
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -25,7 +26,7 @@ struct ProductItem: View {
 
     var body: some View {
             
-            NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader), label:{
+            NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: "", loader: loader), label:{
                 VStack{
                     HStack{
                         
@@ -61,7 +62,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }
