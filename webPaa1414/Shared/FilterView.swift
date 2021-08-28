@@ -86,7 +86,7 @@ struct FilterView: View {
                         ForEach(viewModel.items, id: \.id){ item in
         //                    ForEach(0 ..< 5, id: \.self){ item in
 
-//                            cell(header: item.description, text: "36", color: Color.orange)
+                            cell(header: item.category, text: "36", color: Color.orange)
 
                         }
                     }

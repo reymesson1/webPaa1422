@@ -10,7 +10,8 @@ import SwiftUI
 
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
-    
+    @Published var filterItems = [PostModel]()
+
     let prefixUrl = "http://10.0.0.221:8085"
     
     init() {
@@ -48,7 +49,7 @@ class ViewModel: ObservableObject{
                     DispatchQueue.main.async {
                         
                         print(result)
-                        self.items = result.data
+                        self.filterItems = result.data
 
                     }
                 }else{
@@ -86,7 +87,7 @@ class ViewModel: ObservableObject{
                     let result = try JSONDecoder().decode(DataModel.self, from: data)
                     DispatchQueue.main.async {
                         self.items = result.data
-                        
+                        self.filterItems = result.data
                     }
                 }else{
                     print("No data")
