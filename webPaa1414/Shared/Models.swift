@@ -18,9 +18,15 @@ struct DataModel : Decodable {
 
 struct PostModel : Decodable {
     let id: String
-    let description: String
-    let company: String
-    let image: String
-    let images: [String]
+    let category: String
+    let items: [ItemModel]
 
 }
+
+struct ItemModel : Decodable {
+    let id: String
+    let description: String
+    let image: String
+
+}
+
