@@ -40,6 +40,8 @@ struct ProductItem: View {
                             }
                           }
                         
+                        Text("   ")
+                        
                         VStack(alignment: .leading, spacing: 5){
                                                         
                             Text(descriptionPlaceholder).bold()
