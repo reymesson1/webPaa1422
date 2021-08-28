@@ -29,7 +29,7 @@ struct BraceletsView: View {
 
                 ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
                     
-                    ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, loader: imageVM.loader )
+                    ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData,  loader: imageVM.loader )
 
                 }
             }
@@ -40,7 +40,7 @@ struct BraceletsView: View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", image: "")]), category: "")
+        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", company: "" , image: "")]), category: "")
 
     }
 }

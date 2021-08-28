@@ -12,6 +12,7 @@ struct ProductItem: View {
     let imagePlaceholder: String
     
     let descriptionPlaceholder: String
+    let companyPlaceholder: String
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -45,7 +46,7 @@ struct ProductItem: View {
                         VStack(alignment: .leading, spacing: 5){
                                                         
                             Text(descriptionPlaceholder).bold()
-                            Text("company")
+                            Text(companyPlaceholder)
                             Text("companystyle").font(.caption)
 
                         
@@ -61,7 +62,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }
