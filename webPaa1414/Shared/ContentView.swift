@@ -10,6 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var currentState: Bool = true
     @EnvironmentObject var viewModel : ViewModel
+    
+    init(){
+        self.currentState = viewModel.currentState
+    }
 
     var body: some View {
         
