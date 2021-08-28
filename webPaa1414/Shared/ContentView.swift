@@ -26,7 +26,9 @@ struct ContentView: View {
                             .padding()
                     }).onChange(of: self.currentState, perform: { value in
                         print("Value has changed : \(value)")
-                        viewModel.fetchPosts()
+                        let parameters: [String: Any] = ["company": "onHidden", "companystyle": "onHidden"]
+                        viewModel.createPostsHidden(parameters: parameters)
+                        
                     })
 
                     
