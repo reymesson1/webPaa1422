@@ -11,6 +11,7 @@ struct ProductItem: View {
     
     let imagePlaceholder: String
     
+    let descriptionPlaceholder: String
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -23,28 +24,42 @@ struct ProductItem: View {
     }
 
     var body: some View {
-        
-        
-        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader), label:{
-            Image(uiImage: imageToShow)
-                .resizable()
-                .scaledToFill()
-                .animation(.default)
-                .frame(width: 100, height: 100)
-              .onAppear {
-                loader {
-                    self.image = $0
+            
+            NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, loader: loader), label:{
+                VStack{
+                    HStack{
+                        
+                        Image(uiImage: imageToShow)
+                            .resizable()
+                            .scaledToFill()
+                            .animation(.default)
+                            .frame(width: 100, height: 100)
+                          .onAppear {
+                            loader {
+                                self.image = $0
+                            }
+                          }
+                        
+                        VStack(alignment: .leading, spacing: 5){
+                                                        
+                            Text(descriptionPlaceholder).bold()
+                            Text("company")
+                            Text("companystyle").font(.caption)
+
+                        
+                        }.padding()
+                    }
                 }
-              }
-        })
-//        NavigationLink("Bracelet", destination: BraceletsView( restaurant:  item ))
+            })
+    
+        
 
     }
 }
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }

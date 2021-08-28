@@ -10,9 +10,9 @@ import UIKit
 struct RestaurantImageViewModel: Identifiable {
   let id = UUID()
   let placeholder: String
-    
-  let imageData: String
 
+  let descriptionData: String
+  let imageData: String
   let loader: (@escaping (UIImage?) -> Void) -> Void
 }
 
@@ -35,13 +35,9 @@ final class RestaurantDetailViewModel {
   
   func getImageItems() -> [RestaurantImageViewModel] {
     return restaurant.items.map {
-//        return restaurant.images.map {
-
-        //        print($0)
         RestaurantImageViewModel(
             placeholder: "foodPlaceholder",
-//            imageData: $0,
-//            loader: getLoader(for: $0)
+            descriptionData: $0.description,
             imageData: $0.image,
             loader: getLoader(for: $0.image)
 
