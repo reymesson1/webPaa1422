@@ -11,6 +11,7 @@ import SwiftUI
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
+    @State var currentState: Bool = false
 
 //    let prefixUrl = "http://10.0.0.221:8085"
     let prefixUrl = "http://143.198.171.44:8085"
@@ -138,6 +139,43 @@ class ViewModel: ObservableObject{
                         self.items = result.data
                         self.filterItems = result.data
 
+                    }
+                }else{
+                    print("No data")
+                }
+                
+            }catch let JsonError{
+                print("fetch json error", JsonError.localizedDescription)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchPostsHidden(){
+        
+        guard let url = URL(string: "\(prefixUrl)/gethiddenmode") else{
+            
+            print("Not found url")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data,res, error) in
+            
+            if error != nil{
+                
+                print("error", error?.localizedDescription ?? "")
+                return
+            }
+            
+            do{
+                
+                if let data = data{
+                    
+                    let result = try JSONDecoder().decode(DataModelHidden.self, from: data)
+                    DispatchQueue.main.async {
+                        self.currentState = (error != nil)
+//                        self.currentState = data
                     }
                 }else{
                     print("No data")

@@ -21,12 +21,13 @@ struct ContentView: View {
                 
                 VStack{
                     
-                    Toggle(isOn: $currentState, label:{
+                    Toggle(isOn: $viewModel.currentState, label:{
+//                        Toggle(isOn: $currentState, label:{
+
                         Text(currentState ? "On" : "Off")
                             .padding()
                     }).onChange(of: self.currentState, perform: { value in
                         print("Value has changed : \(value)")
-                        viewModel.fetchPosts()
                     })
 
                     
