@@ -15,6 +15,10 @@ struct FilterView: View {
     @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
     let category: String
+    
+    @State private var countryIndex = 0
+    
+    var countries = ["US", "Germany", "Russia", "Canada", "Mexico", "Romania", "North Korea"]
 
     init(restaurant: PostModel, category: String) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
@@ -24,6 +28,8 @@ struct FilterView: View {
 
     var body: some View {
         
+        NavigationView{
+        
         HStack{
             
             VStack{
@@ -32,39 +38,22 @@ struct FilterView: View {
                     Text("Field by: ")
                     Spacer()
                 }
-//                TextField("Company ", text: $title)
-//                    .padding()
-//                    .background(Color.white)
-//                    .cornerRadius(6)
-//                    .padding(.bottom)
                 
                 Group{
-                    TextField("Company ", text: $company)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Company Style number", text: $companystyle)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Style ", text: $text)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    HStack{
-                        TextField("Price ", text: $text)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        Spacer()
-                        Text(" to ")
-                        Spacer()
-                        TextField("Price Opt ", text: $text)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Section{
+                        
+                        Picker(selection: $countryIndex, label: Text("Company") ){
+                            
+                            Text("Item one")
+                            Text("Item one")
+                            Text("Item one")
+
+                        }
+                        
                     }
+                    
                 }
-                Text("")
-                Text("")
-                Text("")
-                Text("")
                 HStack{
                     Spacer()
                     Button("Search"){
@@ -73,7 +62,6 @@ struct FilterView: View {
                         print("test \(titleInput)")
                         let parameters: [String: Any] = ["company": company, "companystyle": companystyle]
                         viewModelFilter.createPostsFilter(parameters: parameters)
-//                        viewModel.createPosts(parameters: parameters)
 
                     }
                 }
@@ -103,11 +91,12 @@ struct FilterView: View {
             
         }
         
+       }
+        }// END NavigationView
+    }//END body
         
         
-    }
-}
-}
+} // END struc
 
 func newButton(){
     
