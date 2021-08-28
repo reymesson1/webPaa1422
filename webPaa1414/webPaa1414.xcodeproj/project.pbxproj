@@ -134,7 +134,6 @@
 				52333F8926A4715800B5EC15 /* webPaa1414App.swift */,
 				52333F8A26A4715800B5EC15 /* ContentView.swift */,
 				52333F8B26A4715B00B5EC15 /* Assets.xcassets */,
-				52E82E5526D575DF00E66E69 /* FilterView.swift */,
 				52E82E6C26D5BC4F00E66E69 /* ProductDetails.swift */,
 				52E82E7326D5BF3500E66E69 /* ProductZoom.swift */,
 			);
@@ -192,6 +191,7 @@
 			children = (
 				52E82E6526D5B83E00E66E69 /* BraceletsView.swift */,
 				5257EF6526D9A1E600D702E3 /* ProductItem.swift */,
+				52E82E5526D575DF00E66E69 /* FilterView.swift */,
 			);
 			path = RenderProduct;
 			sourceTree = "<group>";

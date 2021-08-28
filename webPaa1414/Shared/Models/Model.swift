@@ -33,6 +33,7 @@ struct ItemModel : Decodable {
     let notes: String
     let price: String
     let priceopt: String
+    let hidden: Bool
     let image: String
 
 }

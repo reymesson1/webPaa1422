@@ -19,6 +19,7 @@ struct RestaurantImageViewModel: Identifiable {
   let notesData: String
   let priceData: String
   let priceoptData: String
+  let hiddenData: Bool
   let imageData: String
   let loader: (@escaping (UIImage?) -> Void) -> Void
 //  let loader2: (@escaping (UIImage?) -> Void) -> Void
@@ -54,6 +55,7 @@ final class RestaurantDetailViewModel {
             notesData: $0.notes,
             priceData: $0.price,
             priceoptData: $0.priceopt,
+            hiddenData: $0.hidden,
             imageData: $0.image,
             loader: getLoader(for: $0.image)
 //            loader2: getLoader(for: $0.image)

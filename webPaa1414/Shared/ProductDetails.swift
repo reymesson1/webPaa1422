@@ -19,6 +19,7 @@ struct ProductDetails: View {
     let notesPlaceholder: String
     let pricePlaceholder: String
     let priceoptPlaceholder: String
+    let hiddenPlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
 
@@ -62,13 +63,15 @@ struct ProductDetails: View {
                             .font(.system(size: 20))
 
                     }
-                    HStack{
+                    if (hiddenPlaceholder){
+                        HStack{
 
-                        Text("Style: ").bold()
-                            .font(.system(size: 26))
-                        Text(stylePlaceholder)
-                            .font(.system(size: 20))
+                            Text("Style: ").bold()
+                                .font(.system(size: 26))
+                            Text(stylePlaceholder)
+                                .font(.system(size: 20))
 
+                        }
                     }
                     HStack{
 
@@ -87,13 +90,16 @@ struct ProductDetails: View {
                 
                 VStack{
                 
-                    HStack{
+                    if (hiddenPlaceholder){
 
-                        Text("Company Name: ").bold()
-                            .font(.system(size: 26))
-                        Text(companyPlaceholder)
-                            .font(.system(size: 20))
+                        HStack{
 
+                            Text("Company Name: ").bold()
+                                .font(.system(size: 26))
+                            Text(companyPlaceholder)
+                                .font(.system(size: 20))
+
+                        }
                     }
                     HStack{
 
@@ -118,22 +124,28 @@ struct ProductDetails: View {
 
                 
                 VStack{
+                    
+                    if (hiddenPlaceholder){
                 
-                    HStack{
+                        HStack{
 
-                        Text("Company Style: ").bold()
-                            .font(.system(size: 26))
-                        Text(companystylePlaceholder)
-                            .font(.system(size: 20))
+                            Text("Company Style: ").bold()
+                                .font(.system(size: 26))
+                            Text(companystylePlaceholder)
+                                .font(.system(size: 20))
 
+                        }
                     }
-                    HStack{
+                    if (hiddenPlaceholder){
 
-                        Text("Notes: ").bold()
-                            .font(.system(size: 26))
-                        Text(notesPlaceholder)
-                            .font(.system(size: 20))
+                        HStack{
 
+                            Text("Notes: ").bold()
+                                .font(.system(size: 26))
+                            Text(notesPlaceholder)
+                                .font(.system(size: 20))
+
+                        }
                     }
                     
                     HStack{
@@ -158,7 +170,7 @@ struct ProductDetails: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: ""){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }

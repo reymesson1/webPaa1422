@@ -19,6 +19,7 @@ struct ProductItem: View {
     let notesPlaceholder: String
     let pricePlaceholder: String
     let priceoptPlaceholder: String
+    let hiddenPlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -32,7 +33,7 @@ struct ProductItem: View {
 
     var body: some View {
             
-        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, loader: loader), label:{
+        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, loader: loader), label:{
                 VStack{
                     HStack{
                         
@@ -68,7 +69,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }
