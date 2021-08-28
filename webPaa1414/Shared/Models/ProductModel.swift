@@ -13,6 +13,12 @@ struct RestaurantImageViewModel: Identifiable {
 
   let descriptionData: String
   let companyData: String
+  let companystyleData: String
+  let styleData: String
+  let categoryData: String
+  let notesData: String
+  let priceData: String
+  let priceoptData: String
   let imageData: String
   let loader: (@escaping (UIImage?) -> Void) -> Void
 //  let loader2: (@escaping (UIImage?) -> Void) -> Void
@@ -42,6 +48,12 @@ final class RestaurantDetailViewModel {
             placeholder: "foodPlaceholder",
             descriptionData: $0.description,
             companyData: $0.company,
+            companystyleData: $0.companystyle,
+            styleData: $0.style,
+            categoryData: $0.category,
+            notesData: $0.notes,
+            priceData: $0.price,
+            priceoptData: $0.priceopt,
             imageData: $0.image,
             loader: getLoader(for: $0.image)
 //            loader2: getLoader(for: $0.image)

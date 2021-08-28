@@ -27,6 +27,12 @@ struct ItemModel : Decodable {
     let id: String
     let description: String
     let company: String
+    let companystyle: String
+    let style: String
+    let category: String
+    let notes: String
+    let price: String
+    let priceopt: String
     let image: String
 
 }

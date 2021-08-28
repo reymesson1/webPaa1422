@@ -13,6 +13,12 @@ struct ProductDetails: View {
     
     let descriptionPlaceholder: String
     let companyPlaceholder: String
+    let companystylePlaceholder: String
+    let stylePlaceholder: String
+    let categoryPlaceholder: String
+    let notesPlaceholder: String
+    let pricePlaceholder: String
+    let priceoptPlaceholder: String
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
 
@@ -44,38 +50,103 @@ struct ProductDetails: View {
                 })
                 Spacer()
             }
-            VStack{
-                HStack{
+            HStack{
+
+                VStack{
+                
                     HStack{
 
                         Text("Style Number: ").bold()
                             .font(.system(size: 26))
                         Text(descriptionPlaceholder)
-                            .font(.system(size: 26))
+                            .font(.system(size: 20))
 
                     }
                     HStack{
 
-                        Text("Company name: ").bold()
+                        Text("Style: ").bold()
                             .font(.system(size: 26))
-                        Text(companyPlaceholder)
+                        Text(stylePlaceholder)
+                            .font(.system(size: 20))
+
+                    }
+                    HStack{
+
+                        Text("Price: ").bold()
                             .font(.system(size: 26))
+                        Text(pricePlaceholder)
+                            .font(.system(size: 20))
 
                     }
 
-                    Text("Company Style")
+                    
+                    
                 }
-                HStack{
-                    Text("Style: ")
-                    Text("Category: ")
-                    Text("Notes: ")
+                
+                Text("  ")
+                
+                VStack{
+                
+                    HStack{
+
+                        Text("Company Name: ").bold()
+                            .font(.system(size: 26))
+                        Text(companyPlaceholder)
+                            .font(.system(size: 20))
+
+                    }
+                    HStack{
+
+                        Text("Category: ").bold()
+                            .font(.system(size: 26))
+                        Text(categoryPlaceholder)
+                            .font(.system(size: 20))
+
+                    }
+                    HStack{
+
+                        Text("Price opt: ").bold()
+                            .font(.system(size: 26))
+                        Text(priceoptPlaceholder)
+                            .font(.system(size: 20))
+
+                    }
 
                 }
-                HStack{
-                    Text("Price: ")
-                    Text("Price opt: ")
+                
+                Text("  ")
 
+                
+                VStack{
+                
+                    HStack{
+
+                        Text("Company Style: ").bold()
+                            .font(.system(size: 26))
+                        Text(companystylePlaceholder)
+                            .font(.system(size: 20))
+
+                    }
+                    HStack{
+
+                        Text("Notes: ").bold()
+                            .font(.system(size: 26))
+                        Text(notesPlaceholder)
+                            .font(.system(size: 20))
+
+                    }
+                    
+                    HStack{
+
+                        Text("          ").bold()
+                            .font(.system(size: 26))
+                        Text("          ")
+                            .font(.system(size: 20))
+
+                    }
+                    
                 }
+                
 
             }
             Spacer()
@@ -87,7 +158,7 @@ struct ProductDetails: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: ""){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: ""){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }

@@ -13,6 +13,12 @@ struct ProductItem: View {
     
     let descriptionPlaceholder: String
     let companyPlaceholder: String
+    let companystylePlaceholder: String
+    let stylePlaceholder: String
+    let categoryPlaceholder: String
+    let notesPlaceholder: String
+    let pricePlaceholder: String
+    let priceoptPlaceholder: String
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -26,7 +32,7 @@ struct ProductItem: View {
 
     var body: some View {
             
-            NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: "", loader: loader), label:{
+        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, loader: loader), label:{
                 VStack{
                     HStack{
                         
@@ -62,7 +68,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }
