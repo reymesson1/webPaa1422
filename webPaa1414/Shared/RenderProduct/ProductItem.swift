@@ -45,8 +45,8 @@ struct ProductItem: View {
                         
                         VStack(alignment: .leading, spacing: 5){
                                                         
-                            Text(descriptionPlaceholder).bold()
-                            Text("company")
+                            Text(descriptionPlaceholder.uppercased()).bold()
+                            Text(companyPlaceholder.lowercased())
                             Text("companystyle").font(.caption)
 
                         
