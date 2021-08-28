@@ -15,6 +15,9 @@ struct FilterView: View {
     @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
     let category: String
+    
+    @State private var isExpanded = false
+    @State private var selectedNum = 1
 
     init(restaurant: PostModel, category: String) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
@@ -32,34 +35,63 @@ struct FilterView: View {
                     Text("Field by: ")
                     Spacer()
                 }
-//                TextField("Company ", text: $title)
-//                    .padding()
-//                    .background(Color.white)
-//                    .cornerRadius(6)
-//                    .padding(.bottom)
-                
                 Group{
-                    TextField("Company ", text: $company)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Company Style number", text: $companystyle)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Style ", text: $text)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    HStack{
-                        TextField("Price ", text: $text)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+
+                    VStack(alignment: .leading, spacing: 15){
+                                                
+                        DisclosureGroup("\(selectedNum)", isExpanded: $isExpanded){
+                            
+                            VStack{
+                                
+                                ForEach(1...5, id: \.self){ num in
+                                    
+                                    Text("\(num)")
+                                        .font(.title3)
+                                        .padding(.all)
+                                        .onTapGesture {
+                                            self.selectedNum = num
+                                            withAnimation{
+
+                                                self.isExpanded.toggle()
+
+                                            }
+                                        }
+                                    
+                                }
+                            }
+                        }.accentColor(.white)
+                        .font(.title2)
+                        .foregroundColor(.white)
+                        .padding(.all, 10)
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                        
                         Spacer()
-                        Text(" to ")
-                        Spacer()
-                        TextField("Price Opt ", text: $text)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
+                        
+                        
+                    }.padding(.all)
+                    
+//                    TextField("Company ", text: $company)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    Text("")
+//                    Text("")
+//                    TextField("Company Style number", text: $companystyle)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    Text("")
+//                    Text("")
+//                    TextField("Style ", text: $text)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    Text("")
+//                    Text("")
+//                    HStack{
+//                        TextField("Price ", text: $text)
+//                            .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        Spacer()
+//                        Text(" to ")
+//                        Spacer()
+//                        TextField("Price Opt ", text: $text)
+//                            .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    }
                 }
                 Text("")
                 Text("")
