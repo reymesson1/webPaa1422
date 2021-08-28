@@ -10,14 +10,15 @@ import SwiftUI
 
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
-    @Published var filterItems = [PostModel]()
+    @Published var filterItems = [FilterModel]()
 
-//    let prefixUrl = "http://10.0.0.221:8085"
-    let prefixUrl = "http://143.198.171.44:8085"
+    let prefixUrl = "http://10.0.0.221:8085"
+//    let prefixUrl = "http://143.198.171.44:8085"
 
 
     init() {
         fetchPosts()
+        fetchFilterPosts()
     }
     
     func createPosts(parameters: [String:Any]){
@@ -47,7 +48,7 @@ class ViewModel: ObservableObject{
                 
                 if let data = data{
                     
-                    let result = try JSONDecoder().decode(DataModel.self, from: data)
+                    let result = try JSONDecoder().decode(DataModelFilter.self, from: data)
                     DispatchQueue.main.async {
                         
                         print(result)
@@ -89,6 +90,41 @@ class ViewModel: ObservableObject{
                     let result = try JSONDecoder().decode(DataModel.self, from: data)
                     DispatchQueue.main.async {
                         self.items = result.data
+                    }
+                }else{
+                    print("No data")
+                }
+                
+            }catch let JsonError{
+                print("fetch json error", JsonError.localizedDescription)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchFilterPosts(){
+        
+        guard let url = URL(string: "\(prefixUrl)/postsfilter") else{
+            
+            print("Not found url")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data,res, error) in
+            
+            if error != nil{
+                
+                print("error", error?.localizedDescription ?? "")
+                return
+            }
+            
+            do{
+                
+                if let data = data{
+                    
+                    let result = try JSONDecoder().decode(DataModelFilter.self, from: data)
+                    DispatchQueue.main.async {
                         self.filterItems = result.data
                     }
                 }else{

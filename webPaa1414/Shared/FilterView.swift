@@ -83,7 +83,7 @@ struct FilterView: View {
                 VStack{
                     List{
                         
-                        ForEach(viewModel.items, id: \.id){ item in
+                        ForEach(viewModel.filterItems, id: \.id){ item in
         //                    ForEach(0 ..< 5, id: \.self){ item in
 
                             cell(header: item.category, text: "36", color: Color.orange)

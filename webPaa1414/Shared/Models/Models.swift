@@ -16,6 +16,15 @@ struct DataModel : Decodable {
     
 }
 
+struct DataModelFilter : Decodable {
+    
+    let error:  Bool
+    let message: String
+    let data : [FilterModel]
+    
+}
+
+
 struct PostModel : Decodable {
     let id: String
     let category: String
@@ -26,6 +35,15 @@ struct PostModel : Decodable {
 struct ItemModel : Decodable {
     let id: String
     let description: String
+    let company: String
+    let image: String
+
+}
+
+struct FilterModel : Decodable {
+    let id: String
+    let description: String
+    let category: String
     let company: String
     let image: String
 
