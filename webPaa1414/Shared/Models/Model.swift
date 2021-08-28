@@ -40,7 +40,7 @@ struct ItemModel : Decodable {
 
 struct DataModelHidden : Decodable {
     
-    let error:  Bool
+    let hidden:  Bool
     let message: String
     let data : [PostModel]
     
