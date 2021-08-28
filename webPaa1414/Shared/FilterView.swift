@@ -72,7 +72,7 @@ struct FilterView: View {
 //                        newButton()
                         print("test \(titleInput)")
                         let parameters: [String: Any] = ["company": company, "companystyle": companystyle]
-                        viewModel.createPosts(parameters: parameters)
+//                        viewModel.createPosts(parameters: parameters)
 
                     }
                 }
