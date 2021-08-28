@@ -12,8 +12,15 @@ struct FilterView: View {
     @State var company = ""
     @State var companystyle = ""
     @State private var titleInput: String = ""
-    @EnvironmentObject var viewModel : ViewModel
-    
+//    @EnvironmentObject var viewModel : ViewModel
+    let viewModel: RestaurantDetailViewModel
+    let category: String
+
+    init(restaurant: PostModel, category: String) {
+      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+      self.category = category
+    }
+
 
     var body: some View {
         
@@ -83,12 +90,19 @@ struct FilterView: View {
                 VStack{
                     List{
                         
-                        ForEach(viewModel.items, id: \.id){ item in
-        //                    ForEach(0 ..< 5, id: \.self){ item in
-
-                            cell(header: item.category, text: "36", color: Color.orange)
+                        ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                            
+                            ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, loader: imageVM.loader )
 
                         }
+
+                        
+//                        ForEach(viewModel.items, id: \.id){ item in
+        //                    ForEach(0 ..< 5, id: \.self){ item in
+
+//                            cell(header: item.category, text: "36", color: Color.orange)
+
+//                        }
                     }
 
 //                    HStack {

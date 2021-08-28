@@ -30,8 +30,15 @@ struct ContentView: View {
 
                     
                     HStack{
-                        NavigationLink("Filter", destination: FilterView()).padding()
-                        Spacer()
+                        ForEach(viewModel.items, id: \.id){ item in
+
+                            if(item.id == "8"){
+
+                                NavigationLink("Filter", destination: FilterView(restaurant: item, category: "Filter")).padding()
+                                Spacer()
+                            
+                            }
+                        }
                     }
                     
                     VStack{
