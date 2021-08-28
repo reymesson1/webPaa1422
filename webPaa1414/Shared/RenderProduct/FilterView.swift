@@ -12,7 +12,7 @@ struct FilterView: View {
     @State var company = ""
     @State var companystyle = ""
     @State private var titleInput: String = ""
-//    @EnvironmentObject var viewModel : ViewModel
+    @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
     let category: String
 
@@ -72,6 +72,7 @@ struct FilterView: View {
 //                        newButton()
                         print("test \(titleInput)")
                         let parameters: [String: Any] = ["company": company, "companystyle": companystyle]
+                        viewModelFilter.createPostsFilter(parameters: parameters)
 //                        viewModel.createPosts(parameters: parameters)
 
                     }
