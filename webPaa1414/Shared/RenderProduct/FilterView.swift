@@ -96,26 +96,6 @@ struct FilterView: View {
 
                         }
 
-                        
-//                        ForEach(viewModel.items, id: \.id){ item in
-        //                    ForEach(0 ..< 5, id: \.self){ item in
-
-//                            cell(header: item.category, text: "36", color: Color.orange)
-
-//                        }
-                    }
-
-//                    HStack {
-//                        cell(header: "Bracelet", text: "36", color: Color.orange)
-//                        cell(header: "Rings", text: "74", color: Color.red)
-//                        cell(header: "Necklace", text: "51", color: Color.gray)
-//                    }
-//
-//                    HStack {
-//                        cell(header: "Pendant", text: "7", color: Color.green)
-//                        cell(header: "Anklet", text: "18", color: Color.blue)
-//                        cell(header: "Belly Chain", text: "12", color: Color.purple)
-//                    }
                 }
                 
             }
@@ -126,29 +106,7 @@ struct FilterView: View {
         
     }
 }
-
-func cell(header: String, text: String, color: Color) -> some View {
-        HStack {
-
-            VStack(alignment: .leading) {
-//                NavigationLink("Show", destination: ProductDetails(id: header))
-
-                Text(header)
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text(text)
-                    .fontWeight(.semibold)
-            }
-            Spacer()
-        }
-//        .frame(maxWidth: .infinity)
-        .frame(height:200)
-        .padding(20)
-        .background(color)
-        .cornerRadius(10)
-        .padding(10)
 }
-
 
 func newButton(){
     

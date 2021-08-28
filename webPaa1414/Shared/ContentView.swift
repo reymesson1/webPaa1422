@@ -26,6 +26,7 @@ struct ContentView: View {
                             .padding()
                     }).onChange(of: self.currentState, perform: { value in
                         print("Value has changed : \(value)")
+                        viewModel.fetchPosts()
                     })
 
                     
@@ -38,6 +39,16 @@ struct ContentView: View {
                                 Spacer()
                             
                             }
+                        }
+                        Button(action: {
+                            print("Value has been updated")
+                            viewModel.fetchPosts()
+                        }) {
+                            Image("refresh")
+                                .resizable()
+                                .scaledToFill()
+//                                .animation(.default)
+                                .frame(width: 40, height: 40)
                         }
                     }
                     
