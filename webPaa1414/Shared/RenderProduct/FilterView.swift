@@ -11,6 +11,9 @@ struct FilterView: View {
     @State var text = ""
     @State var company = ""
     @State var companystyle = ""
+    @State var style = ""
+    @State var price = ""
+    @State var priceopt = ""
     @State private var titleInput: String = ""
     @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
@@ -47,17 +50,17 @@ struct FilterView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")
                     Text("")
-                    TextField("Style ", text: $text)
+                    TextField("Style ", text: $style)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")
                     Text("")
                     HStack{
-                        TextField("Price ", text: $text)
+                        TextField("Price ", text: $price)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                         Text(" to ")
                         Spacer()
-                        TextField("Price Opt ", text: $text)
+                        TextField("Price Opt ", text: $priceopt)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                 }
@@ -71,7 +74,7 @@ struct FilterView: View {
                         
 //                        newButton()
                         print("test \(titleInput)")
-                        let parameters: [String: Any] = ["company": company, "companystyle": companystyle]
+                        let parameters: [String: Any] = ["company": company, "companystyle": companystyle, "style": style, "price": price, "priceopt": priceopt]
                         viewModelFilter.createPostsFilter(parameters: parameters)
 //                        viewModel.createPosts(parameters: parameters)
 
