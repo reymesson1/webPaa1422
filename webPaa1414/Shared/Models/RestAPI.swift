@@ -11,6 +11,7 @@ import SwiftUI
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
+    @Published var isHidden = true
 
 //    let prefixUrl = "http://10.0.0.221:8085"
     let prefixUrl = "http://143.198.171.44:8085"
@@ -91,6 +92,7 @@ class ViewModel: ObservableObject{
                     DispatchQueue.main.async {
                         self.items = result.data
                         self.filterItems = result.data
+                        self.isHidden = result.data[0].items[0].hidden
                     }
                 }else{
                     print("No data")
@@ -195,6 +197,7 @@ class ViewModel: ObservableObject{
         }.resume()
         
     }
+    
     
     
     

@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var currentState: Bool = true
     @EnvironmentObject var viewModel : ViewModel
-
+    
     var body: some View {
         
         NavigationView{
@@ -21,10 +21,10 @@ struct ContentView: View {
                 
                 VStack{
                     
-                    Toggle(isOn: $currentState, label:{
+                    Toggle(isOn: $viewModel.isHidden, label:{
                         Text(currentState ? "On" : "Off")
                             .padding()
-                    }).onChange(of: self.currentState, perform: { value in
+                    }).onChange(of: currentState, perform: { value in
                         print("Value has changed : \(value)")
                         let parameters: [String: Any] = ["company": "onHidden", "companystyle": "onHidden"]
                         viewModel.createPostsHidden(parameters: parameters)
