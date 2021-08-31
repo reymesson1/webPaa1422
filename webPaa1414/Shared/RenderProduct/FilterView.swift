@@ -46,7 +46,7 @@ struct FilterView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")
                     Text("")
-                    TextField("Company Style number", text: $companystyle)
+                    TextField("Company Style number ", text: $companystyle)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")
                     Text("")
@@ -55,12 +55,12 @@ struct FilterView: View {
                     Text("")
                     Text("")
                     HStack{
-                        TextField("Price ", text: $price)
+                        TextField("Price From ", text: $price)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         Spacer()
                         Text(" to ")
                         Spacer()
-                        TextField("Price Opt ", text: $priceopt)
+                        TextField("Price To ", text: $priceopt)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
                 }
