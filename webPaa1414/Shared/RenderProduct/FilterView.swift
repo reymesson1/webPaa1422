@@ -18,6 +18,10 @@ struct FilterView: View {
     @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
     let category: String
+    
+    @State private var selectedValue: String = "No value"
+    
+    let listCities: [String] = ["Paris", "Toronto", "Dublin"]
 
     init(restaurant: PostModel, category: String) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
@@ -42,10 +46,20 @@ struct FilterView: View {
 //                    .padding(.bottom)
                 
                 Group{
-                    TextField("Company ", text: $company)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
+                    
+                    Text(selectedValue)
+                        .font(.largeTitle)
+                        .padding()
+                    Picker("Cities", selection: $selectedValue){
+                        ForEach(listCities, id: \.self){ value in 
+                            Text(value)
+                        }
+                    }
+                    
+//                    TextField("Company ", text: $company)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                    Text("")
+//                    Text("")
                     TextField("Company Style number ", text: $companystyle)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     Text("")

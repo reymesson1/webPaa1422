@@ -21,14 +21,14 @@ struct ContentView: View {
                 
                 VStack{
                     
-                    Toggle(isOn: $viewModel.isHidden, label:{
+//                    Toggle(isOn: $viewModel.isHidden, label:{
+                    Toggle(isOn: $currentState, label:{
                         Text(currentState ? "On" : "Off")
                             .padding()
                     }).onChange(of: currentState, perform: { value in
                         print("Value has changed : \(value)")
                         let parameters: [String: Any] = ["company": "onHidden", "companystyle": "onHidden"]
-                        viewModel.createPostsHidden(parameters: parameters)
-                        
+                        viewModel.createPostsHidden(parameters: parameters)                        
                     })
 
                     
