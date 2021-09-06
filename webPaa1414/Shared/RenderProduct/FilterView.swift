@@ -18,6 +18,8 @@ struct FilterView: View {
     @EnvironmentObject var viewModelFilter : ViewModel
     let viewModel: RestaurantDetailViewModel
     let category: String
+    
+    @State var openSettings: Bool = false
 
     init(restaurant: PostModel, category: String) {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
@@ -26,6 +28,8 @@ struct FilterView: View {
 
 
     var body: some View {
+        
+//        NavigationView{
         
         HStack{
             
@@ -42,8 +46,20 @@ struct FilterView: View {
 //                    .padding(.bottom)
                 
                 Group{
-                    TextField("Company ", text: $company)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    HStack{
+                        TextField("Company ", text: $company)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        Button(action: {
+//                            self.company = "Hello text"
+                            viewModelFilter.showModalFilter = true
+                            
+                        }) {
+                            Image(systemName: "magnifyingglass")
+                        }
+
+                        
+                    }
                     Text("")
                     Text("")
                     TextField("Company Style number ", text: $companystyle)
@@ -109,7 +125,9 @@ struct FilterView: View {
         
         
     }
-}
+//        }.navigationViewStyle(StackNavigationViewStyle())
+            
+        }//hstack
 }
 
 func newButton(){

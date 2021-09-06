@@ -9,9 +9,17 @@ import Foundation
 import SwiftUI
 
 class ViewModel: ObservableObject{
+    
+    //App data
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
+
+    //Hidden mode
     @Published var isHidden = true
+
+    //Filter Company Field
+    @Published var showModalFilter = false
+    @Published var searchInput: String = ""
 
 //    let prefixUrl = "http://10.0.0.221:8085"
     let prefixUrl = "http://143.198.171.44:8085"

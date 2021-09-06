@@ -72,6 +72,9 @@ struct ContentView: View {
 
             }
         }.navigationViewStyle(StackNavigationViewStyle())
+        .sheet(isPresented: $viewModel.showModalFilter){
+            CompanyModalView()
+        }
         
     }
 }

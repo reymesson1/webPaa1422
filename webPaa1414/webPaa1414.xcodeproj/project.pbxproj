@@ -21,6 +21,7 @@
 		52333FDE26A49A9100B5EC15 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52333FDC26A49A9100B5EC15 /* RestAPI.swift */; };
 		5257EF6626D9A1E600D702E3 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257EF6526D9A1E600D702E3 /* ProductItem.swift */; };
 		5257EF6726D9A1E600D702E3 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5257EF6526D9A1E600D702E3 /* ProductItem.swift */; };
+		52DDB50526E25CB100C31FCC /* CompanyModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DDB50426E25CB100C31FCC /* CompanyModal.swift */; };
 		52E82E4F26D53C2300E66E69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E4E26D53C2300E66E69 /* HomeView.swift */; };
 		52E82E5026D53C2300E66E69 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E4E26D53C2300E66E69 /* HomeView.swift */; };
 		52E82E5626D575E000E66E69 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E82E5526D575DF00E66E69 /* FilterView.swift */; };
@@ -72,6 +73,7 @@
 		52333FD526A499BB00B5EC15 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		52333FDC26A49A9100B5EC15 /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		5257EF6526D9A1E600D702E3 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
+		52DDB50426E25CB100C31FCC /* CompanyModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyModal.swift; sourceTree = "<group>"; };
 		52E82E4E26D53C2300E66E69 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		52E82E5526D575DF00E66E69 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		52E82E6526D5B83E00E66E69 /* BraceletsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraceletsView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		52333F8826A4715800B5EC15 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				52DDB50326E25C7D00C31FCC /* Modal */,
 				5257EF7526D9B7A100D702E3 /* View */,
 				5257EF7426D9B76F00D702E3 /* Models */,
 				5257EF6026D9A18E00D702E3 /* RenderProduct */,
@@ -213,6 +216,14 @@
 				52E82E4E26D53C2300E66E69 /* HomeView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		52DDB50326E25C7D00C31FCC /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				52DDB50426E25CB100C31FCC /* CompanyModal.swift */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -383,6 +394,7 @@
 				52E82E8A26D5DB5B00E66E69 /* ImageProductModel.swift in Sources */,
 				52E82E5626D575E000E66E69 /* FilterView.swift in Sources */,
 				52E82E6D26D5BC4F00E66E69 /* ProductDetails.swift in Sources */,
+				52DDB50526E25CB100C31FCC /* CompanyModal.swift in Sources */,
 				52333FB226A4715B00B5EC15 /* webPaa1414App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
