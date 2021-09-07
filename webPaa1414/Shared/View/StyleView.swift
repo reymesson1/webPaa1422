@@ -28,7 +28,19 @@ struct StyleView: View {
                 }
             }.padding()
             
-            ForEach(viewModel.styleItems, id: \.id){ item in
+            HStack{
+                
+                TextField("", text: $viewModel.searchInput, onCommit:{
+                    
+                    self.viewModel.setSearch(term: self.viewModel.searchInput)
+                }).textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Search"){
+                    self.viewModel.setSearch(term: self.viewModel.searchInput)
+                }
+                
+            }
+            
+            ForEach(viewModel.filteredList, id: \.id){ item in
    
                 List{
                     VStack(alignment: .leading){
@@ -40,7 +52,6 @@ struct StyleView: View {
                             
                             VStack(alignment: .leading, spacing: 2){
                              
-//                                Text("Description: \(item.description) ").bold()
                                 HStack{
                                     Text("Description: ").bold()
                                     Text("\(item.description) ")
@@ -50,12 +61,9 @@ struct StyleView: View {
                                     Text("\(item.notes) ")
                                 }
 
-//                                Text("Notes: \(item.notes) ").font(.caption)
-
                             }.padding(.top, 5)
 
                         }
-    //                    }.padding([.leading, .trailing], 10)
                         
                     }
                 }

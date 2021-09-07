@@ -14,15 +14,36 @@ class ViewModel: ObservableObject{
     @Published var companiyItems = [Company]()
     @Published var styleItems = [Style]()
     @Published var isHidden = true
+    
+    @Published var search: String? = nil
+    @Published var searchInput: String = ""{
+        didSet{
+            setSearch(term: searchInput)
+        }
+    }
 
-    let prefixUrl = "http://10.0.0.221:8085"
-//    let prefixUrl = "http://143.198.171.44:8085"
+//    let prefixUrl = "http://10.0.0.221:8085"
+    let prefixUrl = "http://143.198.171.44:8085"
 
 
     init() {
         fetchPosts()
         fetchPostsCompanies()
         fetchPostsStyles()
+    }
+    
+    func setSearch(term: String){
+        let toSearch = term.trimmingCharacters(in: .whitespaces)
+        search = toSearch == "" ? nil : toSearch
+    }
+    
+    var filteredList: [Style]{
+        
+        if let searchText = search{
+            return styleItems.filter({ $0.description.contains(searchText) })
+        }else{
+            return styleItems
+        }
     }
     
     func createPosts(parameters: [String:Any]){
