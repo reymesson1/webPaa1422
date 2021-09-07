@@ -38,3 +38,19 @@ struct ItemModel : Decodable {
 
 }
 
+struct Company : Decodable {
+    let id: String
+    let description: String
+    let notes: String
+}
+
+struct DataModelCompany : Decodable {
+    
+    let error:  Bool
+    let message: String
+    let data : [Company]
+    
+}
+
+
+

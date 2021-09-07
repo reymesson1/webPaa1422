@@ -11,14 +11,16 @@ import SwiftUI
 class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
+    @Published var companiyItems = [Company]()
     @Published var isHidden = true
 
-//    let prefixUrl = "http://10.0.0.221:8085"
-    let prefixUrl = "http://143.198.171.44:8085"
+    let prefixUrl = "http://10.0.0.221:8085"
+//    let prefixUrl = "http://143.198.171.44:8085"
 
 
     init() {
         fetchPosts()
+        fetchPostsCompanies()
     }
     
     func createPosts(parameters: [String:Any]){
@@ -198,6 +200,42 @@ class ViewModel: ObservableObject{
         
     }
     
+    func fetchPostsCompanies(){
+        
+        guard let url = URL(string: "\(prefixUrl)/postscompanies") else{
+            
+            print("Not found url")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data,res, error) in
+            
+            if error != nil{
+                
+                print("error", error?.localizedDescription ?? "")
+                return
+            }
+            
+            do{
+                
+                if let data = data{
+                    
+                    let result = try JSONDecoder().decode(DataModelCompany.self, from: data)
+                    DispatchQueue.main.async {
+                        self.companiyItems = result.data
+                        print(result)
+                    }
+                }else{
+                    print("No data")
+                }
+                
+            }catch let JsonError{
+                print("fetch json error", JsonError.localizedDescription)
+            }
+            
+        }.resume()
+        
+    }
     
     
     

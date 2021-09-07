@@ -345,7 +345,7 @@ struct newHeader: View {
                         NavigationLink("", destination: EmptyView())
                         NavigationLink(" ", destination: EmptyView())
                         NavigationLink("", destination: EmptyView())
-                        NavigationLink("Company", destination: EmptyView())
+                        NavigationLink("Company", destination: CompanyView())
                         Spacer()
                     }
                 }
