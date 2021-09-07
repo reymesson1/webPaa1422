@@ -12,6 +12,7 @@ class ViewModel: ObservableObject{
     @Published var items = [PostModel]()
     @Published var filterItems = [PostModel]()
     @Published var companiyItems = [Company]()
+    @Published var styleItems = [Style]()
     @Published var isHidden = true
 
     let prefixUrl = "http://10.0.0.221:8085"
@@ -21,6 +22,7 @@ class ViewModel: ObservableObject{
     init() {
         fetchPosts()
         fetchPostsCompanies()
+        fetchPostsStyles()
     }
     
     func createPosts(parameters: [String:Any]){
@@ -223,6 +225,43 @@ class ViewModel: ObservableObject{
                     let result = try JSONDecoder().decode(DataModelCompany.self, from: data)
                     DispatchQueue.main.async {
                         self.companiyItems = result.data
+                        print(result)
+                    }
+                }else{
+                    print("No data")
+                }
+                
+            }catch let JsonError{
+                print("fetch json error", JsonError.localizedDescription)
+            }
+            
+        }.resume()
+        
+    }
+    
+    func fetchPostsStyles(){
+        
+        guard let url = URL(string: "\(prefixUrl)/postsstyles") else{
+            
+            print("Not found url")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url){ (data,res, error) in
+            
+            if error != nil{
+                
+                print("error", error?.localizedDescription ?? "")
+                return
+            }
+            
+            do{
+                
+                if let data = data{
+                    
+                    let result = try JSONDecoder().decode(DataModelStyle.self, from: data)
+                    DispatchQueue.main.async {
+                        self.styleItems = result.data
                         print(result)
                     }
                 }else{

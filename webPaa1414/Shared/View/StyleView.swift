@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CompanyView: View {
+struct StyleView: View {
     @EnvironmentObject var viewModel : ViewModel
 
     var body: some View {
@@ -16,19 +16,19 @@ struct CompanyView: View {
 
             HStack{
 
-                Text("Company").bold()
+                Text("Style").bold()
                     .font(.system(size: 30))
                 
                 Spacer()
             }
             HStack{
                 Spacer()
-                Button("Add Company"){
+                Button("Add Style"){
                     print("Add modal")
                 }
             }.padding()
             
-            ForEach(viewModel.companiyItems, id: \.id){ item in
+            ForEach(viewModel.styleItems, id: \.id){ item in
    
                 List{
                     VStack(alignment: .leading){
@@ -70,8 +70,8 @@ struct CompanyView: View {
     }
 }
 
-struct CompanyView_Previews: PreviewProvider {
+struct StyleView_Previews: PreviewProvider {
     static var previews: some View {
-        CompanyView()
+        StyleView()
     }
 }

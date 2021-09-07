@@ -52,5 +52,18 @@ struct DataModelCompany : Decodable {
     
 }
 
+struct Style : Decodable {
+    let id: String
+    let description: String
+    let notes: String
+}
+
+struct DataModelStyle : Decodable {
+    
+    let error:  Bool
+    let message: String
+    let data : [Style]
+    
+}
 
 

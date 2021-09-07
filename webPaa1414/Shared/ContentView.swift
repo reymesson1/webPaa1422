@@ -333,7 +333,7 @@ struct newHeader: View {
                         NavigationLink("", destination: EmptyView())
                         NavigationLink(" ", destination: EmptyView())
                         NavigationLink("", destination: EmptyView())
-                        NavigationLink("Style", destination: EmptyView())
+                        NavigationLink("Style", destination: StyleView())
                         Spacer()
                     }
                 }
