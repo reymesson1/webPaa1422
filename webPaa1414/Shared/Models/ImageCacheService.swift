@@ -20,10 +20,10 @@ final class ImageCacheServiceAdapter: ImageCacheService {
     return URL(fileURLWithPath: "images", relativeTo: cacheURL)
   }
 //  private let domainImagePath = "http://143.198.171.44:3000/images"
-//      private let domainImagePath = "http://143.198.171.44:8085/images"
+      private let domainImagePath = "http://143.198.171.44:8085/images"
 
 //    private let domainImagePath = "http://10.0.0.221:3000/images"
-    private let domainImagePath = "http://10.0.0.221:8085/images"
+//    private let domainImagePath = "http://10.0.0.221:8085/images"
 
   private init() {
     createDirectory()
