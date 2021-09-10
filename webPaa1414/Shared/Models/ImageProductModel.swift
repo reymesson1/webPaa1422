@@ -11,6 +11,7 @@ struct RestaurantImageViewModel: Identifiable {
   let id = UUID()
   let placeholder: String
 
+  let idData: String
   let descriptionData: String
   let companyData: String
   let companystyleData: String
@@ -47,6 +48,7 @@ final class RestaurantDetailViewModel {
     return restaurant.items.map {
         RestaurantImageViewModel(
             placeholder: "foodPlaceholder",
+            idData: $0.id,
             descriptionData: $0.description,
             companyData: $0.company,
             companystyleData: $0.companystyle,

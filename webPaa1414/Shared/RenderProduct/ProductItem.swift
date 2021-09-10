@@ -10,7 +10,8 @@ import SwiftUI
 struct ProductItem: View {
     
     let imagePlaceholder: String
-    
+
+    let idPlaceholder: String
     let descriptionPlaceholder: String
     let companyPlaceholder: String
     let companystylePlaceholder: String
@@ -33,7 +34,7 @@ struct ProductItem: View {
 
     var body: some View {
             
-        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, loader: loader), label:{
+        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, loader: loader), label:{
                 VStack{
                     HStack{
                         
@@ -69,7 +70,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", idPlaceholder: "", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }

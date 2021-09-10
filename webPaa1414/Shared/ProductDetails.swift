@@ -10,7 +10,8 @@ import SwiftUI
 struct ProductDetails: View {
     let imagePlaceholder: String
     
-    
+
+    let idPlaceholder: String
     let descriptionPlaceholder: String
     let companyPlaceholder: String
     let companystylePlaceholder: String
@@ -51,6 +52,19 @@ struct ProductDetails: View {
                 })
                 Spacer()
             }
+            VStack{
+                HStack{
+
+                    Spacer()
+                    NavigationLink(destination: SendEmailView(idPlaceholder: idPlaceholder), label:{
+                            Text("Send a email ✉️")
+                            Text("              ")
+
+                    })
+                }
+            
+            }
+
             HStack{
 
                 VStack{
@@ -170,7 +184,7 @@ struct ProductDetails: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }
