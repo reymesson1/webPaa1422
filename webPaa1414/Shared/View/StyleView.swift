@@ -21,12 +21,12 @@ struct StyleView: View {
                 
                 Spacer()
             }
-            HStack{
-                Spacer()
-                Button("Add Style"){
-                    print("Add modal")
-                }
-            }.padding()
+//            HStack{
+//                Spacer()
+//                Button("Add Style"){
+//                    print("Add modal")
+//                }
+//            }.padding()
             
             HStack{
                 

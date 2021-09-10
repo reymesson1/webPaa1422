@@ -46,6 +46,16 @@ class ViewModel: ObservableObject{
         }
     }
     
+    var filteredListCompany: [Company]{
+        
+        if let searchText = search{
+            return companiyItems.filter({ $0.description.contains(searchText) })
+        }else{
+            return companiyItems
+        }
+    }
+
+    
     func createPosts(parameters: [String:Any]){
         
         guard let url = URL(string: "\(prefixUrl)/createpost") else{

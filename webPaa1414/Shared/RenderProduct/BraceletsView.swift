@@ -16,6 +16,11 @@ struct BraceletsView: View {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
       self.category = category
     }
+    
+    let columns = [
+    
+        GridItem(.adaptive(minimum: 80))
+    ]
 
     var body: some View {
         VStack{
@@ -24,15 +29,28 @@ struct BraceletsView: View {
                     .font(.system(size: 26))
                 Spacer()
             }
+            
+            ScrollView{
+                
+                LazyVGrid(columns: columns, spacing: 20){
 
-            List{
+                    ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                        
+                        ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, loader: imageVM.loader )
 
-                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
-                    
-                    ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, loader: imageVM.loader )
-
+                    }
                 }
             }
+
+
+//            List{
+//
+//                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+//
+//                    ProductItem(imagePlaceholder: imageVM.placeholder, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, loader: imageVM.loader )
+//
+//                }
+//            }
         }
 
     }

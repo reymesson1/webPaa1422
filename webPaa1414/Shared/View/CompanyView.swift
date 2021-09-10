@@ -22,13 +22,25 @@ struct CompanyView: View {
                 Spacer()
             }
             HStack{
-                Spacer()
-                Button("Add Company"){
-                    print("Add modal")
+                
+                TextField("", text: $viewModel.searchInput, onCommit:{
+                    
+                    self.viewModel.setSearch(term: self.viewModel.searchInput)
+                }).textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Search"){
+                    self.viewModel.setSearch(term: self.viewModel.searchInput)
                 }
-            }.padding()
+                
+            }
             
-            ForEach(viewModel.companiyItems, id: \.id){ item in
+//            HStack{
+//                Spacer()
+//                Button("Add Company"){
+//                    print("Add modal")
+//                }
+//            }.padding()
+            
+            ForEach(viewModel.filteredListCompany, id: \.id){ item in
    
                 List{
                     VStack(alignment: .leading){

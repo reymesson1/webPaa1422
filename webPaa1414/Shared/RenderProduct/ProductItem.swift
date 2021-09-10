@@ -48,16 +48,16 @@ struct ProductItem: View {
                             }
                           }
                         
-                        Text("   ")
-                        
-                        VStack(alignment: .leading, spacing: 5){
-                                                        
-                            Text(descriptionPlaceholder.uppercased()).bold()
-                            Text(companyPlaceholder.lowercased())
-                            Text("companystyle").font(.caption)
-
-                        
-                        }.padding()
+//                        Text("   ")
+//                        
+//                        VStack(alignment: .leading, spacing: 5){
+//                                                        
+//                            Text(descriptionPlaceholder.uppercased()).bold()
+//                            Text(companyPlaceholder.lowercased())
+//                            Text("companystyle").font(.caption)
+//
+//                        
+//                        }.padding()
                     }
                 }
             })
