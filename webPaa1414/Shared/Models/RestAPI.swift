@@ -15,8 +15,8 @@ class ViewModel: ObservableObject{
     @Published var styleItems = [Style]()
     @Published var isHidden = true
 
-//    let prefixUrl = "http://10.0.0.221:8085"
-    let prefixUrl = "http://143.198.171.44:8085"
+    let prefixUrl = "http://10.0.0.221:8085"
+//    let prefixUrl = "http://143.198.171.44:8085"
 
 
     init() {

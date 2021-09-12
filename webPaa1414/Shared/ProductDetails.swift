@@ -23,6 +23,8 @@ struct ProductDetails: View {
     let hiddenPlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
+    
+    @State private var favoriteStar: Bool = false
 
     var imageToShow: UIImage {
       if let loadedImage = image {
@@ -35,6 +37,22 @@ struct ProductDetails: View {
     var body: some View {
         
         VStack{
+            HStack{
+                Spacer()
+                Button(action:{
+                    print("press")
+                    self.favoriteStar.toggle()
+                }, label:{
+                    Image(systemName: "star.fill")
+                        .foregroundColor(favoriteStar ? .red : .gray)
+                        .font(.system(size: 36))
+
+                    Text("              ")
+
+                })
+
+                
+            }
             VStack{
                 
                 NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
@@ -57,7 +75,9 @@ struct ProductDetails: View {
 
                     Spacer()
                     NavigationLink(destination: SendEmailView(idPlaceholder: idPlaceholder), label:{
-                            Text("Send a email ✉️")
+                            Text("✉️")
+                                .font(.system(size: 36))
+
                             Text("              ")
 
                     })

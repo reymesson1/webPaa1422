@@ -38,10 +38,20 @@ struct ContentView: View {
                             if(item.id == "8"){
 
                                 NavigationLink("Filter", destination: FilterView(restaurant: item, category: "Filter")).padding()
+                                Text("|")
+
+                            
+                            }
+                            if(item.id == "9"){
+
+                                NavigationLink("Favorite", destination: FavoriteView(restaurant: item, category: "Favorite")).padding()
                                 Spacer()
                             
                             }
                         }
+                        Spacer()
+                        Text(" ")
+                        Spacer()
                         Button(action: {
                             print("Value has been updated")
                             viewModel.fetchPosts()

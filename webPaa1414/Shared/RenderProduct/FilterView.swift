@@ -29,18 +29,21 @@ struct FilterView: View {
         
         HStack{
             
+            
             VStack{
                 
                 HStack{
-                    Text("Field by: ")
+                    Text(category).bold()
+                        .font(.system(size: 26))
                     Spacer()
                 }
-//                TextField("Company ", text: $title)
-//                    .padding()
-//                    .background(Color.white)
-//                    .cornerRadius(6)
-//                    .padding(.bottom)
+                .padding(.bottom)
                 
+                HStack{
+                    Text("Field by: ")
+                        .padding(20)
+                    Spacer()
+                }                
                 Group{
                     TextField("Company ", text: $company)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -72,12 +75,9 @@ struct FilterView: View {
                     Spacer()
                     Button("Search"){
                         
-//                        newButton()
                         print("test \(titleInput)")
                         let parameters: [String: Any] = ["company": company, "companystyle": companystyle, "style": style, "price": price, "priceopt": priceopt]
                         viewModelFilter.createPostsFilter(parameters: parameters)
-//                        viewModel.createPosts(parameters: parameters)
-
                     }
                 }
                 Spacer()
