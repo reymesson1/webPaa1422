@@ -21,6 +21,7 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
+    let favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -42,9 +43,12 @@ struct ProductDetails: View {
                 Button(action:{
                     print("press")
                     self.favoriteStar.toggle()
+                    
                 }, label:{
                     Image(systemName: "star.fill")
-                        .foregroundColor(favoriteStar ? .red : .gray)
+//                        .foregroundColor(favoriteStar ? .red : .gray)
+                        .foregroundColor(favoritePlaceholder ? .red : .gray)
+
                         .font(.system(size: 36))
 
                     Text("              ")
@@ -204,7 +208,7 @@ struct ProductDetails: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }
