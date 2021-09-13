@@ -21,12 +21,17 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
-    let favoritePlaceholder: Bool
+    @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
+    @State private var temp: Int = 2
     @State private var favoriteStar: Bool = false
+    
 
+    @EnvironmentObject var viewModel: ViewModel
+
+    
     var imageToShow: UIImage {
       if let loadedImage = image {
         return loadedImage
@@ -42,14 +47,37 @@ struct ProductDetails: View {
                 Spacer()
                 Button(action:{
                     print("press")
-                    self.favoriteStar.toggle()
+                    print(temp)
+//                    self.favoriteStar.toggle()
+                    favoriteStar = favoritePlaceholder
+                    if(favoriteStar){
+                        temp = 0
+                        print(temp)
+                        favoriteStar = true
+//                        self.favoriteStar.toggle()
+
+                    }else{
+                        temp = 1
+                        print(temp)
+
+//                        self.favoriteStar.toggle()
+                        favoriteStar = false
+                    }
+                    let parameters: [String: Any] = ["productId": idPlaceholder, "favorite": favoriteStar]
+                    viewModel.createPostsFavorite(parameters: parameters)
+//                    viewModel.fetchPosts()
+
                     
                 }, label:{
-                    Image(systemName: "star.fill")
-//                        .foregroundColor(favoriteStar ? .red : .gray)
-                        .foregroundColor(favoritePlaceholder ? .red : .gray)
+                    
+                    FavoriteHeaderView(favoriteStar: $favoritePlaceholder,temp: $temp)
+//                    Image(systemName: "star.fill")
+//                    Text("Favorite")
 
-                        .font(.system(size: 36))
+//                        .foregroundColor(favoriteStar ? .red : .gray)
+//                        .foregroundColor(favoritePlaceholder ? .red : .gray)
+
+//                        .font(.system(size: 36))
 
                     Text("              ")
 
@@ -205,6 +233,53 @@ struct ProductDetails: View {
         
     }
 }
+
+
+struct FavoriteHeaderView: View{
+    @Binding private var favoritePlaceholder: Bool
+    @Binding private var favoriteStar: Int
+
+    
+    init(favoriteStar: Binding<Bool>,temp: Binding<Int>){
+        self._favoritePlaceholder = favoriteStar
+        self._favoriteStar = temp
+        print(temp)
+        print(favoriteStar)
+    }
+    
+    var body : some View{
+    
+        if(favoriteStar==2){
+            
+            Image(systemName: "star.fill")
+                 .foregroundColor(favoritePlaceholder ? .red : .gray)
+                 .font(.system(size: 36))
+            Text("              ")
+
+            
+        }
+        if(favoriteStar==1){
+            Image(systemName: "star.fill")
+                .foregroundColor(.red)
+                 .font(.system(size: 36))
+            Text("              ")
+
+        }
+        if(favoriteStar==0){
+            Image(systemName: "star.fill")
+                .foregroundColor(.gray)
+                 .font(.system(size: 36))
+            Text("              ")
+
+        }
+        
+
+    }
+    
+}
+
+
+
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {

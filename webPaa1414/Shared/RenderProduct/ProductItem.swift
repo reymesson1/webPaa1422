@@ -37,7 +37,7 @@ struct ProductItem: View {
             
         NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader), label:{
                 VStack{
-                    HStack{
+                    HStack(spacing: 10){
                         
                         Image(uiImage: imageToShow)
                             .resizable()
@@ -51,15 +51,15 @@ struct ProductItem: View {
                           }
                         
                         Text("   ")
-                        
-                        VStack(alignment: .leading, spacing: 5){
-                                                        
-                            Text(descriptionPlaceholder.uppercased()).bold()
-                            Text(companyPlaceholder.lowercased())
-                            Text("companystyle").font(.caption)
-
-                        
-                        }.padding()
+//                        
+//                        VStack(alignment: .leading, spacing: 5){
+//                                                        
+//                            Text(descriptionPlaceholder.uppercased()).bold()
+//                            Text(companyPlaceholder.lowercased())
+//                            Text("companystyle").font(.caption)
+//
+//                        
+//                        }.padding()
                     }
                 }
             })
