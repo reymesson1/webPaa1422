@@ -11,7 +11,7 @@ struct ProductDetails: View {
     let imagePlaceholder: String
     
 
-    let idPlaceholder: String
+    @State var idPlaceholder: String
     let descriptionPlaceholder: String
     let companyPlaceholder: String
     let companystylePlaceholder: String
@@ -21,7 +21,7 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
-    let favoritePlaceholder: Bool
+    @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -40,22 +40,7 @@ struct ProductDetails: View {
         VStack{
             HStack{
                 Spacer()
-                Button(action:{
-                    print("press")
-                    self.favoriteStar.toggle()
-                    
-                }, label:{
-                    Image(systemName: "star.fill")
-//                        .foregroundColor(favoriteStar ? .red : .gray)
-                        .foregroundColor(favoritePlaceholder ? .red : .gray)
-
-                        .font(.system(size: 36))
-
-                    Text("              ")
-
-                })
-
-                
+                FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)                
             }
             VStack{
                 
@@ -205,6 +190,41 @@ struct ProductDetails: View {
         
     }
 }
+
+
+struct FavoriteHeaderView: View {
+
+    @EnvironmentObject var viewModel : ViewModel
+    @Binding var idPlaceholder : String
+    @Binding var favoritePlaceholder : Bool
+    
+    init(idPlacerholder: Binding<String>,favoritePlaceholder: Binding<Bool>){
+        
+        self._idPlaceholder = idPlacerholder
+        self._favoritePlaceholder = favoritePlaceholder
+        
+    }
+    
+    var body: some View {
+
+        Button(action:{
+            print("press")
+            favoritePlaceholder.toggle()
+            let parameters: [String: Any] = ["productId": idPlaceholder, "favorite": favoritePlaceholder]
+            viewModel.createPostsFavorite(parameters: parameters) //                    viewModel.fetchPosts()
+
+        }, label:{
+            Image(systemName: "star.fill")
+                .foregroundColor(favoritePlaceholder ? .red : .gray)
+                .font(.system(size: 36))
+            Text("              ")
+
+        })
+        
+    }
+    
+}
+        
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {

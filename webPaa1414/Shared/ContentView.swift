@@ -21,15 +21,13 @@ struct ContentView: View {
                 
                 VStack{
                     
-                    Toggle(isOn: $viewModel.isHidden, label:{
-                        Text(currentState ? "On" : "Off")
-                            .padding()
-                    }).onChange(of: currentState, perform: { value in
-                        print("Value has changed : \(value)")
-                        let parameters: [String: Any] = ["company": "onHidden", "companystyle": "onHidden"]
-                        viewModel.createPostsHidden(parameters: parameters)
-                        
-                    })
+                    HStack{
+
+                        Spacer()
+                        ContentToggleView(favoritePlaceholder: $viewModel.isHidden)
+
+                    }
+                    
 
                     
                     HStack{
@@ -370,6 +368,39 @@ struct newHeader: View {
     
 }
 
+struct ContentToggleView: View {
+
+    @EnvironmentObject var viewModel : ViewModel
+    @Binding var favoritePlaceholder : Bool
+
+    init(favoritePlaceholder: Binding<Bool>){
+
+        self._favoritePlaceholder = favoritePlaceholder
+    }
+
+    var body: some View {
+
+        Button(action:{
+            favoritePlaceholder.toggle()
+            let parameters: [String: Any] = ["productId": "", "favorite": favoritePlaceholder]
+            viewModel.createPostsHidden(parameters: parameters) 
+
+        }, label:{
+            
+            if(favoritePlaceholder){
+                Image(systemName: "eye.slash.fill")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 36))
+            }else{
+                Image(systemName: "eye.fill")
+                    .foregroundColor(.gray)
+                    .font(.system(size: 36))
+            }
+        })
+
+    }
+
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
