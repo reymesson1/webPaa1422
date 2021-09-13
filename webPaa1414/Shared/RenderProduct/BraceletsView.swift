@@ -16,6 +16,11 @@ struct BraceletsView: View {
       self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
       self.category = category
     }
+    
+    var items : [GridItem]{
+        
+        Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
+    }
 
     var body: some View {
         VStack{
@@ -25,14 +30,20 @@ struct BraceletsView: View {
                 Spacer()
             }
 
-            List{
+            ScrollView(.vertical, showsIndicators: false){
 
-                ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
-                    
-                    ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, loader: imageVM.loader )
+                LazyVGrid(columns: items, spacing: 10){
 
+                    ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                        
+
+                            ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, loader: imageVM.loader )
+
+                    }
                 }
-            }
+//            }
+            }.padding(.vertical)
+            
         }
 
     }
