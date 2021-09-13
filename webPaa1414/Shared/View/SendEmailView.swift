@@ -23,52 +23,38 @@ struct SendEmailView: View {
     var body: some View {
         
         VStack{
-            HStack{
-
-                Text("Send an email").bold()
-                    .font(.system(size: 30))
-                
-                Spacer()
-            }
             
-            VStack{
-
-                Group{
-                    TextField("First Name ", text: $firstname)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Last Name ", text: $lastname)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                    TextField("Email ", text: $email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    Text("")
-                    Text("")
-                }
-                Text("")
-                Text("")
-                Text("")
-                Text("")
                 
-                HStack{
-                    Spacer()
-                    Button("Send"){
+                Button("Send"){
+                 
+                    let parameters: [String: Any] = ["id":idPlaceholder, "firstname": firstname, "lastname": lastname, "email": email]
+                    viewModel.createPostsSendEmail(parameters: parameters)
+                    presentationMode.wrappedValue.dismiss()
 
-                        
-                        print("press")
-                        let parameters: [String: Any] = ["id":idPlaceholder, "firstname": firstname, "lastname": lastname, "email": email]
-                        viewModel.createPostsSendEmail(parameters: parameters)
-                        presentationMode.wrappedValue.dismiss()
+                }.frame(minWidth: 0, maxWidth: .infinity, alignment: .trailing)
 
+                Text("Send an Email")
+            
+                            Group{
+                                TextField("First Name ", text: $firstname)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                Text("")
+                                Text("")
+                                TextField("Last Name ", text: $lastname)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                Text("")
+                                Text("")
+                                TextField("Email ", text: $email)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                Text("")
+                                Text("")
+                            }
 
-                    }
-                }
+            
+                Spacer()
 
-            }.padding(20)
-        }
-        
+        }.padding()
+        .font(.title)        
     }
 }
 

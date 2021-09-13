@@ -25,7 +25,7 @@ struct ProductDetails: View {
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
-    @State private var favoriteStar: Bool = false
+    @State private var sendEmail: Bool = false
 
     var imageToShow: UIImage {
       if let loadedImage = image {
@@ -63,13 +63,26 @@ struct ProductDetails: View {
                 HStack{
 
                     Spacer()
-                    NavigationLink(destination: SendEmailView(idPlaceholder: idPlaceholder), label:{
-                            Text("✉️")
-                                .font(.system(size: 36))
+                    Button(action:{
+                        print("press")
+                        self.sendEmail = true
+                    }, label:{
+                        
+                        Text("✉️")
+                            .font(.system(size: 36))
 
-                            Text("              ")
+                        Text("              ")
+
 
                     })
+
+//                    NavigationLink(destination: SendEmailView(idPlaceholder: idPlaceholder), label:{
+//                            Text("✉️")
+//                                .font(.system(size: 36))
+//
+//                            Text("              ")
+//
+//                    })
                 }
             
             }
@@ -185,6 +198,9 @@ struct ProductDetails: View {
 
             }
             Spacer()
+        }
+        .sheet(isPresented: $sendEmail){
+            SendEmailView(idPlaceholder: idPlaceholder)
         }
         
         
