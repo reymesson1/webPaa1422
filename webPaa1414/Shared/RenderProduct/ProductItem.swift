@@ -37,7 +37,7 @@ struct ProductItem: View {
             
         NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader), label:{
                 VStack{
-                    HStack{
+                    VStack{
                         
                         Image(uiImage: imageToShow)
                             .resizable()
@@ -49,6 +49,8 @@ struct ProductItem: View {
                                 self.image = $0
                             }
                           }
+                          Text(descriptionPlaceholder.uppercased()).bold()
+
                         
 //                        Text("   ")
 //                        
