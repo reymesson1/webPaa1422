@@ -37,172 +37,95 @@ struct ProductDetails: View {
 
     var body: some View {
         
-        VStack{
-            HStack{
-                Spacer()
-                FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)                
-            }
-            VStack{
-                
-                NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
+        ZStack{
+
+            NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
 
                 Image(uiImage: imageToShow)
                     .resizable()
-                    .scaledToFill()
-                    .animation(.default)
-                    .frame(width: 500, height: 500, alignment: .center)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .edgesIgnoringSafeArea(.all)
                   .onAppear {
                     loader {
                         self.image = $0
                     }
                   }
-                })
-                Spacer()
-            }
-            VStack{
-                HStack{
-
-                    Spacer()
-                    Button(action:{
-                        print("press")
-                        self.sendEmail = true
-                    }, label:{
-                        
-                        Text("✉️")
-                            .font(.system(size: 36))
-
-                        Text("              ")
-
-
-                    })
-
-//                    NavigationLink(destination: SendEmailView(idPlaceholder: idPlaceholder), label:{
-//                            Text("✉️")
-//                                .font(.system(size: 36))
-//
-//                            Text("              ")
-//
-//                    })
-                }
+            })
             
+            VStack{
+                
+                HStack{
+                    Spacer()
+                    FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)
+                }
+                
+                Spacer()
+                Group{
+                    HStack(alignment: .top, spacing: 0){
+                        VStack(alignment: .leading, spacing: 10){
+                            Text("Style Number: ")
+                            Text("Style: ")
+                            Text("Company: ")
+                            Text("Company Style: ")
+                            Text("Price: ")
+                            Text("Price Opt: ")
+                            Text("Notes: ")
+                        }.frame(width: 200, alignment: .leading)
+                        
+                        VStack(alignment: .leading, spacing: 10){
+                            
+                            Text("\(descriptionPlaceholder)")
+                            Text("\(stylePlaceholder)")
+                            Text("\(companyPlaceholder)")
+                            Text("\(companystylePlaceholder)")
+                            Text("\(pricePlaceholder)")
+                            Text("\(priceoptPlaceholder)")
+                            Text("\(notesPlaceholder)")
+                        }.font(Font.body.weight(.semibold))
+                        
+                        
+                    }.padding()
+                    
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
+                .cornerRadius(15)
+                .padding( EdgeInsets(top: 300, leading: 200, bottom: 0, trailing: 200)  )
+                
+                Spacer()
+                Group{
+                    HStack(alignment: .bottom, spacing: 0){
+                        
+                        Spacer()
+                        Button(action:{
+                            print("press")
+                            self.sendEmail = true
+                        }, label:{
+    
+                            Text("Send email")
+                                .font(.system(size: 20))
+
+                            Text("✉️")
+                                .font(.system(size: 36))
+                            
+                            Text("              ")
+
+                                
+                        })
+                        
+                    }.padding()
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
+                .cornerRadius(15)
+                .padding(.leading, 200)
+                
             }
-
-            HStack{
-
-                VStack{
-                
-                    HStack{
-
-                        Text("Style Number: ").bold()
-                            .font(.system(size: 26))
-                        Text(descriptionPlaceholder)
-                            .font(.system(size: 20))
-
-                    }
-                    if (hiddenPlaceholder){
-                        HStack{
-
-                            Text("Style: ").bold()
-                                .font(.system(size: 26))
-                            Text(stylePlaceholder)
-                                .font(.system(size: 20))
-
-                        }
-                    }
-                    HStack{
-
-                        Text("Price: ").bold()
-                            .font(.system(size: 26))
-                        Text(pricePlaceholder)
-                            .font(.system(size: 20))
-
-                    }
-
-                    
-                    
-                }
-                
-                Text("  ")
-                
-                VStack{
-                
-                    if (hiddenPlaceholder){
-
-                        HStack{
-
-                            Text("Company Name: ").bold()
-                                .font(.system(size: 26))
-                            Text(companyPlaceholder)
-                                .font(.system(size: 20))
-
-                        }
-                    }
-                    HStack{
-
-                        Text("Category: ").bold()
-                            .font(.system(size: 26))
-                        Text(categoryPlaceholder)
-                            .font(.system(size: 20))
-
-                    }
-                    HStack{
-
-                        Text("Price opt: ").bold()
-                            .font(.system(size: 26))
-                        Text(priceoptPlaceholder)
-                            .font(.system(size: 20))
-
-                    }
-
-                }
-                
-                Text("  ")
-
-                
-                VStack{
-                    
-                    if (hiddenPlaceholder){
-                
-                        HStack{
-
-                            Text("Company Style: ").bold()
-                                .font(.system(size: 26))
-                            Text(companystylePlaceholder)
-                                .font(.system(size: 20))
-
-                        }
-                    }
-                    if (hiddenPlaceholder){
-
-                        HStack{
-
-                            Text("Notes: ").bold()
-                                .font(.system(size: 26))
-                            Text(notesPlaceholder)
-                                .font(.system(size: 20))
-
-                        }
-                    }
-                    
-                    HStack{
-
-                        Text("          ").bold()
-                            .font(.system(size: 26))
-                        Text("          ")
-                            .font(.system(size: 20))
-
-                    }
-                    
-                }
-                
-
-            }
-            Spacer()
-        }
-        .sheet(isPresented: $sendEmail){
+            
+        }.sheet(isPresented: $sendEmail){
             SendEmailView(idPlaceholder: idPlaceholder)
         }
-        
         
     }
 }
