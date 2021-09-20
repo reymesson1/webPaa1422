@@ -97,7 +97,41 @@ struct ProductDetails: View {
                 Group{
                     HStack(alignment: .bottom, spacing: 0){
                         
+                        HStack{
+                            
+                            Image(uiImage: imageToShow)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                                .frame(minWidth: 10, maxWidth: 50, minHeight: 10, maxHeight: 50, alignment: .center)
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .edgesIgnoringSafeArea(.all)
+                              .onAppear {
+                                loader {
+                                    self.image = $0
+                                }
+                              }.padding(20)
+                                .border(Color.black, width: 2)
+                            
+                            Image(uiImage: imageToShow)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+//                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                                .frame(minWidth: 10, maxWidth: 50, minHeight: 10, maxHeight: 50, alignment: .center)
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .edgesIgnoringSafeArea(.all)
+                              .onAppear {
+                                loader {
+                                    self.image = $0
+                                }
+                              }.padding(20)
+                                .border(Color.black, width: 2)
+
+                            
+                        }
                         Spacer()
+                        
+
                         Button(action:{
                             print("press")
                             self.sendEmail = true

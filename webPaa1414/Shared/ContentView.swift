@@ -11,11 +11,14 @@ struct ContentView: View {
     @State private var currentState: Bool = true
     @EnvironmentObject var viewModel : ViewModel
     
+    let defaults = UserDefaults.standard
+    
     var body: some View {
-        
+
         NavigationView{
                     
             VStack {
+
                 newHeader()
                     .frame(height:270)
                 
@@ -297,7 +300,8 @@ struct newHeader: View {
     var body: some View {
 
         ZStack{
-            Color(red: 12 / 255, green: 53 / 255, blue: 62 / 255)
+            Color(red: 69 / 255, green: 148 / 255, blue: 205 / 255)
+
             HStack{
                 Group{
                     VStack{
