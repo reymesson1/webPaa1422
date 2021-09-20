@@ -11,6 +11,8 @@ struct ContentView: View {
     @State private var currentState: Bool = true
     @EnvironmentObject var viewModel : ViewModel
     
+    @State private var showSheet: Bool = true
+    
     var body: some View {
         
         NavigationView{
@@ -78,6 +80,9 @@ struct ContentView: View {
                     
                 }
 
+            }.sheet(isPresented: $showSheet){
+                LoginView()
+                    
             }
         }.navigationViewStyle(StackNavigationViewStyle())
         
