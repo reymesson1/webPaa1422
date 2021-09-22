@@ -67,4 +67,15 @@ struct DataModelStyle : Decodable {
     
 }
 
+struct Login : Decodable {
+    let token: String
+}
+
+struct DataModelLogin : Decodable {
+    
+    let error:  Bool
+    let message: String
+    let data : [Login]
+    
+}
 

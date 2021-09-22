@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationView{
+//        NavigationView{
                     
             VStack {
                 newHeader()
@@ -79,8 +79,9 @@ struct ContentView: View {
                 }
 
             }
-        }.navigationViewStyle(StackNavigationViewStyle())
-        
+//        }.navigationViewStyle(StackNavigationViewStyle())
+//         .navigationBarBackButtonHidden(true)
+
     }
 }
 
@@ -297,7 +298,10 @@ struct newHeader: View {
     var body: some View {
 
         ZStack{
-            Color(red: 12 / 255, green: 53 / 255, blue: 62 / 255)
+//            Color(red: 12 / 255, green: 53 / 255, blue: 62 / 255)
+            Image("background")
+                .resizable()
+
             HStack{
                 Group{
                     VStack{
