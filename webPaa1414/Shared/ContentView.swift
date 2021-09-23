@@ -13,76 +13,76 @@ struct ContentView: View {
     
     var body: some View {
         
-//        NavigationView{
-                    
-            VStack {
-                newHeader()
-                    .frame(height:270)
-                
-                VStack{
-                    
-                    HStack{
+        VStack {
+            newHeader()
+            .frame(height:270)
 
-                        Spacer()
-                        ContentToggleView(favoritePlaceholder: $viewModel.isHidden)
+        }
+        
+        ZStack{
+//            Image("background")
+//                .resizable()
+            
 
-                    }
-                    
+            ContentMiddleView()
+                .frame(height: 130)
+        }
+    
+        VStack{
+            newBody()
+            .frame(height:600)
 
-                    
-                    HStack{
-                        ForEach(viewModel.items, id: \.id){ item in
+        }
 
-                            if(item.id == "8"){
-
-                                NavigationLink("Filter", destination: FilterView(restaurant: item, category: "Filter")).padding()
-                                Text("|")
-
-                            
-                            }
-                            if(item.id == "9"){
-
-                                NavigationLink("Favorite", destination: FavoriteView(restaurant: item, category: "Favorite")).padding()
-                                Spacer()
-                            
-                            }
-                        }
-                        Spacer()
-                        Text(" ")
-                        Spacer()
-                        Button(action: {
-                            print("Value has been updated")
-                            viewModel.fetchPosts()
-                        }) {
-                            Image("refresh")
-                                .resizable()
-                                .scaledToFill()
-//                                .animation(.default)
-                                .frame(width: 40, height: 40)
-                        }
-                    }
-                    
-                    VStack{
-
-                        newBody()
-                            .frame(height:600)
-
-                    }
-
-                    
-                    
-                                        
-
-//                    HomeView()
-//                        .frame(height:600)
-                    
-                }
-
-            }
-//        }.navigationViewStyle(StackNavigationViewStyle())
-//         .navigationBarBackButtonHidden(true)
-
+        
     }
+}
+
+struct ContentMiddleView: View {
+    @EnvironmentObject var viewModel : ViewModel
+
+    var body: some View {
+        
+        VStack{
+            
+
+            HStack{
+                Spacer()
+                ContentToggleView(favoritePlaceholder: $viewModel.isHidden)
+            }
+            HStack{
+                ForEach(viewModel.items, id: \.id){ item in
+
+                    if(item.id == "8"){
+
+                        NavigationLink("Filter", destination: FilterView(restaurant: item, category: "Filter")).padding()
+                        Text("|")
+                    }
+                    if(item.id == "9"){
+
+                        NavigationLink("Favorite", destination: FavoriteView(restaurant: item, category: "Favorite")).padding()
+                        Spacer()
+                    }
+                }
+                Spacer()
+                Spacer()
+                Button(action: {
+                    print("Value has been updated")
+                    viewModel.fetchPosts()
+                }) {
+                    Image("refresh")
+                        .resizable()
+                        .scaledToFill()
+//                                .animation(.default)
+                        .frame(width: 40, height: 40)
+                }
+            }
+            
+            
+        }
+        
+    }
+    
 }
 
 struct newBody: View {
@@ -91,204 +91,216 @@ struct newBody: View {
     var body: some View {
         
     
-        VStack{
-            HStack {
-                
-                ForEach(viewModel.items, id: \.id){ item in
-
-                    if(item.id == "0"){
-
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Bracelets" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                    }else if(item.id == "1"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "RM" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }else if(item.id == "2"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Rings" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }else if(item.id == "3"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pendant" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }
-                        
-                    
-                }
-
-            } //END HStack #1
+        ZStack{
             
-            HStack {
-                
-                ForEach(viewModel.items, id: \.id){ item in
-
-                    if(item.id == "4"){
-
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pings" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                    }else if(item.id == "5"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Necklace" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }else if(item.id == "6"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Earings" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }else if(item.id == "7"){
-                        
-                        ZStack {
-                            NavigationLink(destination: BraceletsView( restaurant:  item, category: "Watches" ), label:{
-
-                                Image("folder")
-                                    .resizable()
-                            })
-                            .font(.title)
-                            .foregroundColor(Color(.white))
-                        
-                            Text(item.category)
-                            .fontWeight(.bold)
-                            
-                        }
-                        .frame(height:200)
-                        .padding(20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .padding(10)
-                        
-                        
-                    }
-                        
-                    
-                }
-
-            }// ENDHStack 2
-            Spacer()
+//            Image("background")
+//                .resizable()
+            
+            
+            VStack{
 
             
-        }//END VStack
+                    HStack {
+                        
+                        ForEach(viewModel.items, id: \.id){ item in
+
+                            if(item.id == "0"){
+
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Bracelets" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                            }else if(item.id == "1"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "RM" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }else if(item.id == "2"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Rings" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }else if(item.id == "3"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pendant" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }
+                                
+                            
+                        }
+
+                    } //END HStack #1
+            }
+            
+            VStack{
+            
+                    HStack {
+                        
+                        ForEach(viewModel.items, id: \.id){ item in
+
+                            if(item.id == "4"){
+
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pings" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                            }else if(item.id == "5"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Necklace" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }else if(item.id == "6"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Earings" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }else if(item.id == "7"){
+                                
+                                ZStack {
+                                    NavigationLink(destination: BraceletsView( restaurant:  item, category: "Watches" ), label:{
+
+                                        Image("folder")
+                                            .resizable()
+                                    })
+                                    .font(.title)
+                                    .foregroundColor(Color(.white))
+                                
+                                    Text(item.category)
+                                    .fontWeight(.bold)
+                                    
+                                }
+                                .frame(height:200)
+                                .padding(20)
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .padding(10)
+                                
+                                
+                            }
+                                
+                            
+                        }
+
+                    }// ENDHStack 2
+                    Spacer()
+
+                    
+                }//END VStack
+        }
         
     }
 }
