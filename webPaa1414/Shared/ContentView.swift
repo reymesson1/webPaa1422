@@ -93,7 +93,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Bracelets" ), label:{
 
-                                Image("folder")
+                                Image("folder-bracelets")
                                     .resizable()
                             })
                             .font(.title)
@@ -113,7 +113,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "RM" ), label:{
 
-                                Image("folder")
+                                Image("folder-rm")
                                     .resizable()
                             })
                             .font(.title)
@@ -135,7 +135,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Rings" ), label:{
 
-                                Image("folder")
+                                Image("folder-rings")
                                     .resizable()
                             })
                             .font(.title)
@@ -157,7 +157,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pendant" ), label:{
 
-                                Image("folder")
+                                Image("folder-pendant")
                                     .resizable()
                             })
                             .font(.title)
@@ -190,7 +190,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Pings" ), label:{
 
-                                Image("folder")
+                                Image("folder-pins")
                                     .resizable()
                             })
                             .font(.title)
@@ -210,7 +210,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Necklace" ), label:{
 
-                                Image("folder")
+                                Image("folder-necklace")
                                     .resizable()
                             })
                             .font(.title)
@@ -218,6 +218,7 @@ struct newBody: View {
                         
                             Text(item.category)
                             .fontWeight(.bold)
+                            
                             
                         }
                         .frame(height:200)
@@ -232,7 +233,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Earings" ), label:{
 
-                                Image("folder")
+                                Image("folder-earrings")
                                     .resizable()
                             })
                             .font(.title)
@@ -254,7 +255,7 @@ struct newBody: View {
                         ZStack {
                             NavigationLink(destination: BraceletsView( restaurant:  item, category: "Watches" ), label:{
 
-                                Image("folder")
+                                Image("folder-watches")
                                     .resizable()
                             })
                             .font(.title)
@@ -290,7 +291,9 @@ struct newHeader: View {
     var body: some View {
 
         ZStack{
-            Color(red: 12 / 255, green: 53 / 255, blue: 62 / 255)
+//            Color(red: 12 / 255, green: 53 / 255, blue: 62 / 255)
+            Image("background")
+                .resizable()
             HStack{
                 Group{
                     VStack{
