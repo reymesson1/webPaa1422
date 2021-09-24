@@ -105,14 +105,19 @@ struct HeaderImage: View {
 struct LoginButton: View {
     var body: some View{
         
-        Text("LOGIN")
-            .font(.headline)
-            .foregroundColor(.white)
-            .padding()
-            .frame(width: 220, height: 60)
-            .background(Color.black)
-            .cornerRadius(35)
-        
+        ZStack{
+            
+            Image("background")
+                .resizable()
+
+            Text("LOGIN")
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding()
+
+        }.frame(width: 220, height: 60)
+        .cornerRadius(35)
+
     }
 }
 
