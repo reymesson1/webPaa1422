@@ -16,6 +16,8 @@ class ViewModel: ObservableObject{
     @Published var isHidden = true
     @Published var token = ""
     @Published var isLogged = false
+    @Published var isNotLogged = false
+
 
 //    let prefixUrl = "http://10.0.0.221:8085"
     let prefixUrl = "http://143.198.171.44:8085"
@@ -457,6 +459,7 @@ class ViewModel: ObservableObject{
 
             }catch let JsonError{
                 print("fetch json error", JsonError.localizedDescription)
+                self.isNotLogged=true
             }
 
         }.resume()

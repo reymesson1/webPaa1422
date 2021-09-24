@@ -9,10 +9,10 @@ import SwiftUI
 
 let lightGreyColor = Color(red: 239/255, green: 243/255, blue: 244/255)
 
+
 struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
-    @State var authenticateDidFail: Bool = false
     @State var authenticateDidSuccedd: Bool = true
     @EnvironmentObject var viewModel : ViewModel
     @State var isLinkActive = false
@@ -29,7 +29,7 @@ struct LoginView: View {
                         HeaderImage()
                         UsernameTextField(username: $username)
                         PasswordTextField(password: $password)
-                        if authenticateDidFail {
+                        if viewModel.isNotLogged {
                             Text("Information not correct. Try again.")
                                 .offset(y: -10)
                                 .foregroundColor(.red)
@@ -76,7 +76,6 @@ struct ContentToggleValueView: View {
                 self.favoritePlaceholder = true
                 
             }
-
 
         }, label:{
             
