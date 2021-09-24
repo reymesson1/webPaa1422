@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         
-        NavigationView{
+//        NavigationView{
                     
             VStack {
                 newHeader()
@@ -70,16 +70,9 @@ struct ContentView: View {
                     }
 
                     
-                    
-                                        
-
-//                    HomeView()
-//                        .frame(height:600)
-                    
                 }
 
-            }
-        }.navigationViewStyle(StackNavigationViewStyle())
+            }.edgesIgnoringSafeArea(.all)
         
     }
 }

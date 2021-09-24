@@ -18,49 +18,26 @@ struct LoginView: View {
     @State var isLinkActive = false
 
     var body: some View {
-        
-        NavigationView{
-            
-            ZStack{
-                VStack{
-                    HeaderImage()
-                    UsernameTextField(username: $username)
-                    PasswordTextField(password: $password)
-                    if authenticateDidFail {
-                        Text("Information not correct. Try again.")
-                            .offset(y: -10)
-                            .foregroundColor(.red)
-                    }
                     
-//                    NavigationLink(destination: ContentView(), isActive: $isLinkActive, label: {
-
-//                        Button(action: {
-//                            let parameters: [String: Any] = ["username": username, "password": password]
-//                            viewModel.createPostsLogin(parameters: parameters)
-//                            if(viewModel.isLogged){
-//
-//                                print("logged")
-//                                self.isLinkActive = true
-//
-//                            }
-//                        }, label: {
-//                            LoginButton()
-//                        })
-                        
+        NavigationView{
+            ZStack{
+                
+                Image("background")
+                    .resizable()
+                
+                    VStack{
+                        HeaderImage()
+                        UsernameTextField(username: $username)
+                        PasswordTextField(password: $password)
+                        if authenticateDidFail {
+                            Text("Information not correct. Try again.")
+                                .offset(y: -10)
+                                .foregroundColor(.red)
+                        }
                         ContentToggleValueView(username: $username, password: $password, favoritePlaceholder: $viewModel.isLogged)
-
-                        
-
-//                        Loginbutton(username: username, password: password, isActive: $viewModel.isLogged)
-
-                        
-//                    })
-   
-                }
-            }
-            .frame(width: 300, height: 300, alignment: .center)
-            .padding()
-            
+                    }.frame(width: 300)
+                    .padding()
+            }.edgesIgnoringSafeArea(.all)
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }
@@ -90,9 +67,6 @@ struct ContentToggleValueView: View {
         NavigationLink(destination: ContentView(), isActive: $favoritePlaceholder, label: {
 
         Button(action:{
-//            favoritePlaceholder.toggle()
-//            let parameters: [String: Any] = ["productId": "", "favorite": favoritePlaceholder]
-//            viewModel.createPostsHidden(parameters: parameters)
             
             let parameters: [String: Any] = ["username": username, "password": password]
             viewModel.createPostsLogin(parameters: parameters)
@@ -113,37 +87,6 @@ struct ContentToggleValueView: View {
 
     }
 
-}
-
-struct Loginbutton2: View {
-    @Binding var username: String
-    @Binding var password: String
-    @Binding var isLinkActive: Bool
-    @EnvironmentObject var viewModel : ViewModel
-
-
-    var body: some View{
-    
-        NavigationLink(destination: ContentView(), isActive: $isLinkActive, label: {
-
-            Button(action: {
-                let parameters: [String: Any] = ["username": username, "password": password]
-                viewModel.createPostsLogin(parameters: parameters)
-                if(viewModel.isLogged){
-                    
-                    print("logged")
-                    self.isLinkActive = true
-                    
-                }
-            }, label: {
-                LoginButton()
-            })
-            
-        })
-
- 
-        
-    }
 }
 
 struct HeaderImage: View {
