@@ -11,7 +11,9 @@ import SwiftUI
 struct webPaa1414App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(ViewModel())
+            LoginView().environmentObject(ViewModel())
+//            ContentView().environmentObject(ViewModel())
+
         }
     }
 }
