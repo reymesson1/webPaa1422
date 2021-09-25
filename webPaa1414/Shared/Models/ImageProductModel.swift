@@ -23,8 +23,9 @@ struct RestaurantImageViewModel: Identifiable {
   let hiddenData: Bool
   let favoriteData: Bool
   let imageData: String
+  let image2Data: String
   let loader: (@escaping (UIImage?) -> Void) -> Void
-//  let loader2: (@escaping (UIImage?) -> Void) -> Void
+  let loader2: (@escaping (UIImage?) -> Void) -> Void
 
 }
 
@@ -61,8 +62,9 @@ final class RestaurantDetailViewModel {
             hiddenData: $0.hidden,
             favoriteData: $0.favorite,
             imageData: $0.image,
-            loader: getLoader(for: $0.image)
-//            loader2: getLoader(for: $0.image)
+            image2Data: $0.image2,
+            loader: getLoader(for: $0.image),
+            loader2: getLoader(for: $0.image2)
 
         )
     }

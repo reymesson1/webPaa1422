@@ -51,7 +51,7 @@ struct BraceletsView: View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: "")]), category: "")
+        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: "", image2: "")]), category: "")
 
     }
 }

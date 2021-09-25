@@ -24,7 +24,9 @@ struct ProductDetails: View {
     @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
-    
+    let loader2: (@escaping (UIImage?) -> Void) -> Void
+    @State private var image2: UIImage?
+
     @State private var sendEmail: Bool = false
 
     var imageToShow: UIImage {
@@ -168,6 +170,6 @@ struct FavoriteHeaderView: View {
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false){ closure in
-            closure(UIImage(named: "restaurant1"))}
+            closure(UIImage(named: "restaurant1"))}, 
     }
 }
