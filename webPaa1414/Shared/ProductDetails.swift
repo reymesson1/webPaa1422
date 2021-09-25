@@ -22,6 +22,7 @@ struct ProductDetails: View {
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
     @State var favoritePlaceholder: Bool
+    let imagesPlaceholder: [String]
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -36,7 +37,7 @@ struct ProductDetails: View {
     }
 
     var body: some View {
-        
+                
         ZStack{
 
             NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
@@ -97,7 +98,24 @@ struct ProductDetails: View {
                 Group{
                     HStack(alignment: .bottom, spacing: 0){
                         
+                        HStack{
+                            
+//                            ForEach(0 ..< 5){ item in
+                            ForEach(0 ..< imagesPlaceholder.count, id: \.self){ index in
+                                    
+                                
+//                                    print(self.imagesPlaceholder[0])
+
+//                                Text(self.imagesPlaceholder[index])
+                                Text("item ")
+                            
+                            }
+                            
+                            
+                        }
+                        
                         Spacer()
+                        
                         Button(action:{
                             print("press")
                             self.sendEmail = true
@@ -167,7 +185,7 @@ struct FavoriteHeaderView: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false, imagesPlaceholder: [String()]){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }

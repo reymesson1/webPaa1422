@@ -36,6 +36,7 @@ struct ItemModel : Decodable {
     let hidden: Bool
     let favorite: Bool
     let image: String
+    let images: [String]
 
 }
 

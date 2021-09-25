@@ -22,6 +22,7 @@ struct ProductItem: View {
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
     let favoritePlaceholder: Bool
+    let imagesPlaceholder: [String]
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
     
@@ -35,7 +36,7 @@ struct ProductItem: View {
 
     var body: some View {
             
-        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader), label:{
+        NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, imagesPlaceholder: [String()], loader: loader), label:{
                 VStack{
                     VStack{
                         
@@ -73,7 +74,7 @@ struct ProductItem: View {
 
 struct ProductItem_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItem(imagePlaceholder: "foodPlaceholder", idPlaceholder: "", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false, loader: { closure in
+        ProductItem(imagePlaceholder: "foodPlaceholder", idPlaceholder: "", descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "", notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false, imagesPlaceholder: [String()], loader: { closure in
                         closure(UIImage(named: "rings"))})
     }
 }
