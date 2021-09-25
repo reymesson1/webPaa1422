@@ -21,6 +21,7 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
+    let hiddenPlaceholder:
     @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
