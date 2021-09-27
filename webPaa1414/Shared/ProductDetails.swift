@@ -21,9 +21,12 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
+    let imagesPlaceholder: [String]
     @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
+    @State private var image2: UIImage?
+
     
     @State private var sendEmail: Bool = false
     
@@ -62,14 +65,60 @@ struct ProductDetails: View {
             
             if selectedSegmentIndex == 0 {
                 
-                Text("Details")
+                
+                List(0 ..< imagesPlaceholder.count, id: \.self){ index in
+
+
+                    Text(imagesPlaceholder[index])
+                    
+                    
+                    
+                }
                 
                 
             }else{
                 
                 Text("More Images")
                 
-                ProductItem(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader)
+                List(0 ..< imagesPlaceholder.count, id: \.self){ index in
+                    
+                    let item = ItemModel(id: idPlaceholder, description: descriptionPlaceholder, company: companyPlaceholder, companystyle: companystylePlaceholder, style: stylePlaceholder, category: categoryPlaceholder, notes: notesPlaceholder, price: pricePlaceholder, priceopt: priceoptPlaceholder, hidden: hiddenPlaceholder, favorite: favoritePlaceholder, image: imagePlaceholder, images: imagesPlaceholder)
+                    
+                    let restaurant = PostModel(id: "0", category: "ProductDetails", items: [item])
+//
+                    let viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+                    
+                    let imageVM = viewModel.getImageItems()[0]
+                    
+//                    ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, imagesPlaceholder: imageVM.imageData2, loader: imageVM.loader )
+
+                
+
+
+                    
+                    
+//
+////
+//                    ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+////
+//
+//                        ProductItem(imagePlaceholder: imagesPlaceholder[index], idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, imagesPlaceholder: imageVM.imageData2, loader: imageVM.loader )
+//
+//                    }
+
+
+
+                    Text(imagesPlaceholder[index] + "   ")
+                    Text(imagePlaceholder + "   ")
+
+                    ProductItem(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, imagesPlaceholder: imagesPlaceholder, loader: loader)
+
+                    
+                    
+                    
+                }
+
+                
                 
             }
             
@@ -117,7 +166,7 @@ struct FavoriteHeaderView: View {
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, imagesPlaceholder: [""] , favoritePlaceholder: false){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }

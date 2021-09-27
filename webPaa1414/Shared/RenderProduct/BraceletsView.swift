@@ -37,7 +37,7 @@ struct BraceletsView: View {
                     ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
                         
 
-                            ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, loader: imageVM.loader )
+                        ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.notesData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, imagesPlaceholder: imageVM.imageData2, loader: imageVM.loader )
 
                     }
                 }
@@ -51,7 +51,7 @@ struct BraceletsView: View {
 
 struct BraceletsView_Previews: PreviewProvider {
     static var previews: some View {
-        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: "")]), category: "")
+        BraceletsView(restaurant: PostModel(id: "", category: "", items: [ItemModel(id: "", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: "", images: ["String"])]), category: "")
 
     }
 }
