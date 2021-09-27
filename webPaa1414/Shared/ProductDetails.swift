@@ -26,6 +26,11 @@ struct ProductDetails: View {
     @State private var image: UIImage?
     
     @State private var sendEmail: Bool = false
+    
+    @State private var showSheet: Bool = false
+    
+    @EnvironmentObject var viewModel : ViewModel
+
 
     var imageToShow: UIImage {
       if let loadedImage = image {
@@ -97,7 +102,22 @@ struct ProductDetails: View {
                 Group{
                     HStack(alignment: .bottom, spacing: 0){
                         
+                        Button(action:{
+                            print("press")
+                            let parameters: [String: Any] = ["id": idPlaceholder]
+                            viewModel.createPostsProductDetails(parameters: parameters) //                    viewModel.fetchPosts()
+//                            FavoriteView(view)
+                            self.showSheet = true
+                        }, label:{
+    
+                            Text("Show Image")
+                                .font(.system(size: 20))
+
+                                
+                        })
+                        
                         Spacer()
+
                         Button(action:{
                             print("press")
                             self.sendEmail = true
@@ -126,7 +146,9 @@ struct ProductDetails: View {
         }.sheet(isPresented: $sendEmail){
             SendEmailView(idPlaceholder: idPlaceholder)
         }
-        
+        .sheet(isPresented: $showSheet){
+            EmptyView()
+        }
     }
 }
 
