@@ -26,6 +26,8 @@ struct ProductDetails: View {
     @State private var image: UIImage?
     
     @State private var sendEmail: Bool = false
+    
+    @State private var selectedSegmentIndex: Int = 0
 
     var imageToShow: UIImage {
       if let loadedImage = image {
@@ -37,15 +39,12 @@ struct ProductDetails: View {
 
     var body: some View {
         
-        ZStack{
+        VStack{
 
             NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
 
                 Image(uiImage: imageToShow)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .edgesIgnoringSafeArea(.all)
                   .onAppear {
                     loader {
                         self.image = $0
@@ -53,78 +52,29 @@ struct ProductDetails: View {
                   }
             })
             
-            VStack{
+            Picker("", selection: $selectedSegmentIndex){
                 
-                HStack{
-                    Spacer()
-                    FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)
-                }
+                Text("Details").tag(0)
+                Text("More Images").tag(1)
                 
-                Spacer()
-                Group{
-                    HStack(alignment: .top, spacing: 0){
-                        VStack(alignment: .leading, spacing: 10){
-                            Text("Style Number: ")
-                            Text("Style: ")
-                            Text("Company: ")
-                            Text("Company Style: ")
-                            Text("Price: ")
-                            Text("Price Opt: ")
-                            Text("Notes: ")
-                        }.frame(width: 200, alignment: .leading)
-                        
-                        VStack(alignment: .leading, spacing: 10){
-                            
-                            Text("\(descriptionPlaceholder)")
-                            Text("\(stylePlaceholder)")
-                            Text("\(companyPlaceholder)")
-                            Text("\(companystylePlaceholder)")
-                            Text("\(pricePlaceholder)")
-                            Text("\(priceoptPlaceholder)")
-                            Text("\(notesPlaceholder)")
-                        }.font(Font.body.weight(.semibold))
-                        
-                        
-                    }.padding()
-                    
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
-                .cornerRadius(15)
-                .padding( EdgeInsets(top: 300, leading: 200, bottom: 0, trailing: 200)  )
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding()
+            
+            if selectedSegmentIndex == 0 {
                 
-                Spacer()
-                Group{
-                    HStack(alignment: .bottom, spacing: 0){
-                        
-                        Spacer()
-                        Button(action:{
-                            print("press")
-                            self.sendEmail = true
-                        }, label:{
-    
-                            Text("Send email")
-                                .font(.system(size: 20))
-
-                            Text("✉️")
-                                .font(.system(size: 36))
-                            
-                            Text("              ")
-
-                                
-                        })
-                        
-                    }.padding()
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
-                .cornerRadius(15)
-                .padding(.leading, 200)
+                Text("Details")
+                
+                
+            }else{
+                
+                Text("More Images")
+                
+                ProductItem(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader)
                 
             }
             
-        }.sheet(isPresented: $sendEmail){
-            SendEmailView(idPlaceholder: idPlaceholder)
+            
+            
         }
         
     }
