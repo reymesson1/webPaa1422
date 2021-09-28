@@ -60,15 +60,80 @@ struct ProductDetails: View {
             Text(descriptionPlaceholder)
             Picker("", selection: $selectedSegmentIndex){
                 
-                Text("Ratings").tag(0)
-                Text("Images").tag(1)
+                Text("Details").tag(0)
+                Text("More Images").tag(1)
             }.pickerStyle(SegmentedPickerStyle())
             .padding()
             
             if selectedSegmentIndex == 0 {
-                List(0 ..< imagesPlaceholder.count, id: \.self ){ index in
                 
-                    Text(imagesPlaceholder[index])
+                List{
+                    
+                    HStack{
+                        Text("Style Number: ")
+                        
+                        Text(descriptionPlaceholder)
+                            .font(.title)
+                    }
+                    
+                    HStack{
+                        Text("Price: ")
+                        
+                        Text(pricePlaceholder)
+                            .font(.title)
+                    }
+                    
+                    HStack{
+                        Text("Price Opt: ")
+                        
+                        Text(priceoptPlaceholder)
+                            .font(.title)
+                    }
+                    
+                    if hiddenPlaceholder {
+
+                    
+                        HStack{
+                            Text("Company: ")
+                            
+                            Text(companyPlaceholder)
+                                .font(.title)
+                        }
+                        
+                        HStack{
+                            Text("Company Style: ")
+                            
+                            Text(companystylePlaceholder)
+                                .font(.title)
+                        }
+                        
+                        HStack{
+                            Text("Style: ")
+                            
+                            Text(stylePlaceholder)
+                                .font(.title)
+                        }
+                    }
+                    
+                    HStack{
+                        Text("Category: ")
+                        
+                        Text(categoryPlaceholder)
+                            .font(.title)
+                    }
+                    
+                    HStack{
+                        Text("Note: ")
+                        
+                        Text(notesPlaceholder)
+                            .font(.title)
+                    }
+
+
+
+
+
+
                     
                 }
                 
