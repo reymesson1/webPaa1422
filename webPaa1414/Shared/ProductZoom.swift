@@ -18,7 +18,7 @@ struct ProductZoom: View {
     @State var draggedSize: CGSize = CGSize.zero
     @State var previousDragged : CGSize = CGSize.zero
   //  @GestureState var scale: CGFloat = 1.0
-      @State var scale : CGFloat = 1.0
+    @State var scale : CGFloat = 1.0
 
 
     

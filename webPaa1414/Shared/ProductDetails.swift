@@ -21,12 +21,15 @@ struct ProductDetails: View {
     let pricePlaceholder: String
     let priceoptPlaceholder: String
     let hiddenPlaceholder: Bool
+    let imagesPlaceholder: [String]
     @State var favoritePlaceholder: Bool
     let loader: (@escaping (UIImage?) -> Void) -> Void
     @State private var image: UIImage?
-    
-    @State private var sendEmail: Bool = false
 
+    @State private var sendEmail: Bool = false
+    
+    @State private var selectedSegmentIndex: Int = 0
+    
     var imageToShow: UIImage {
       if let loadedImage = image {
         return loadedImage
@@ -34,10 +37,11 @@ struct ProductDetails: View {
         return UIImage(named: imagePlaceholder)!
       }
     }
+   
 
     var body: some View {
         
-        ZStack{
+        VStack{
 
             NavigationLink(destination: ProductZoom(imagePlaceholder: imagePlaceholder, loader: loader), label:{
 
@@ -52,79 +56,55 @@ struct ProductDetails: View {
                     }
                   }
             })
+
+            Text(descriptionPlaceholder)
+            Picker("", selection: $selectedSegmentIndex){
+                
+                Text("Ratings").tag(0)
+                Text("Images").tag(1)
+            }.pickerStyle(SegmentedPickerStyle())
+            .padding()
             
-            VStack{
+            if selectedSegmentIndex == 0 {
+                List(0 ..< imagesPlaceholder.count, id: \.self ){ index in
                 
-                HStack{
-                    Spacer()
-                    FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)
-                }
-                
-                Spacer()
-                Group{
-                    HStack(alignment: .top, spacing: 0){
-                        VStack(alignment: .leading, spacing: 10){
-                            Text("Style Number: ")
-                            Text("Style: ")
-                            Text("Company: ")
-                            Text("Company Style: ")
-                            Text("Price: ")
-                            Text("Price Opt: ")
-                            Text("Notes: ")
-                        }.frame(width: 200, alignment: .leading)
-                        
-                        VStack(alignment: .leading, spacing: 10){
-                            
-                            Text("\(descriptionPlaceholder)")
-                            Text("\(stylePlaceholder)")
-                            Text("\(companyPlaceholder)")
-                            Text("\(companystylePlaceholder)")
-                            Text("\(pricePlaceholder)")
-                            Text("\(priceoptPlaceholder)")
-                            Text("\(notesPlaceholder)")
-                        }.font(Font.body.weight(.semibold))
-                        
-                        
-                    }.padding()
+                    Text(imagesPlaceholder[index])
                     
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
-                .cornerRadius(15)
-                .padding( EdgeInsets(top: 300, leading: 200, bottom: 0, trailing: 200)  )
                 
-                Spacer()
-                Group{
-                    HStack(alignment: .bottom, spacing: 0){
-                        
-                        Spacer()
-                        Button(action:{
-                            print("press")
-                            self.sendEmail = true
-                        }, label:{
-    
-                            Text("Send email")
-                                .font(.system(size: 20))
-
-                            Text("✉️")
-                                .font(.system(size: 36))
-                            
-                            Text("              ")
-
+            }else{
+                
+                List(0 ..< imagesPlaceholder.count, id: \.self ){ index in
+                
+                    Text(imagesPlaceholder[index])
+//ContentView -> Item
+                    let item = ItemModel(id: "0", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: imagesPlaceholder[index], images: imagesPlaceholder)
+                
+//BraceletsView -> convert to  RestaurantViewModel
+                
+                    let restaurant = PostModel(id: "0", category: "", items: [item])
                                 
-                        })
-                        
-                    }.padding()
+                    ProductDetailsListView(restaurant: restaurant, category: "Details List")
+                    
+                    
                 }
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                .background(Color(red: 231 / 255, green: 232 / 255, blue: 232 / 255))
-                .cornerRadius(15)
-                .padding(.leading, 200)
+
+                
                 
             }
             
-        }.sheet(isPresented: $sendEmail){
-            SendEmailView(idPlaceholder: idPlaceholder)
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            
         }
         
     }
@@ -163,11 +143,40 @@ struct FavoriteHeaderView: View {
     }
     
 }
+
+struct ProductDetailsListView: View {
+
+    let viewModel: RestaurantDetailViewModel
+    let category: String
+
+    init(restaurant: PostModel, category: String) {
+      self.viewModel = RestaurantDetailViewModel(restaurant: restaurant)
+      self.category = category
+    }
+    
+    var body: some View {
+        
+        VStack{
+            
+            ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
+                
+                  ProductItemList(imagePlaceholder: imageVM.placeholder, loader: imageVM.loader)
+
+
+//                ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder:
+                
+            }
+            
+            
+        }
+    }
+    
+}
         
 
 struct ProductDetails_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, favoritePlaceholder: false){ closure in
+        ProductDetails(imagePlaceholder: "foodPlaceholder", idPlaceholder: "",descriptionPlaceholder: "", companyPlaceholder: "", companystylePlaceholder: "", stylePlaceholder: "", categoryPlaceholder: "",notesPlaceholder: "", pricePlaceholder: "", priceoptPlaceholder: "", hiddenPlaceholder: false, imagesPlaceholder: [""], favoritePlaceholder: false){ closure in
             closure(UIImage(named: "restaurant1"))}
     }
 }
