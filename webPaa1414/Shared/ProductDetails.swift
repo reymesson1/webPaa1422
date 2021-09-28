@@ -75,13 +75,9 @@ struct ProductDetails: View {
             }else{
                 
                 List(0 ..< imagesPlaceholder.count, id: \.self ){ index in
-                
-                    Text(imagesPlaceholder[index])
-//ContentView -> Item
-                    let item = ItemModel(id: "0", description: "", company: "", companystyle: "", style: "", category: "", notes: "", price: "", priceopt: "", hidden: false, favorite: false, image: imagesPlaceholder[index], images: imagesPlaceholder)
-                
-//BraceletsView -> convert to  RestaurantViewModel
-                
+
+                    let item = ItemModel(id: "0", description: descriptionPlaceholder, company: companyPlaceholder, companystyle: companystylePlaceholder, style: stylePlaceholder, category: categoryPlaceholder, notes: notesPlaceholder, price: pricePlaceholder, priceopt: priceoptPlaceholder, hidden: hiddenPlaceholder, favorite: favoritePlaceholder, image: imagesPlaceholder[index], images: imagesPlaceholder)
+                                
                     let restaurant = PostModel(id: "0", category: "", items: [item])
                                 
                     ProductDetailsListView(restaurant: restaurant, category: "Details List")
@@ -160,7 +156,9 @@ struct ProductDetailsListView: View {
             
             ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
                 
-                  ProductItemList(imagePlaceholder: imageVM.placeholder, loader: imageVM.loader)
+//                  ProductItemList(imagePlaceholder: imageVM.placeholder, loader: imageVM.loader)
+                
+                ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.categoryData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, imagesPlaceholder: imageVM.imagesData, loader: imageVM.loader)
 
 
 //                ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder:
