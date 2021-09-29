@@ -56,8 +56,35 @@ struct ProductDetails: View {
                     }
                   }
             })
+            
+            VStack{
+                
+                HStack{
+                    
+                    FavoriteHeaderView(idPlacerholder: $idPlaceholder, favoritePlaceholder: $favoritePlaceholder)
+                        .padding(.leading, 80)
+                    
+                    Spacer()
+                    
+                    Button(action:{
+                        print("press")
+                        self.sendEmail = true
+                    }, label: {
+                        
+                        Text("✉️")
+                            .font(.system(size: 36))
+                    }).padding(.trailing, 80)
+                    
+                    
+                }
+                
+            }
 
             Text(descriptionPlaceholder)
+                .font(.title)
+            
+            
+            
             Picker("", selection: $selectedSegmentIndex){
                 
                 Text("Details").tag(0)
@@ -70,71 +97,113 @@ struct ProductDetails: View {
                 List{
                     
                     HStack{
-                        Text("Style Number: ")
                         
-                        
-                        Text(descriptionPlaceholder)
-                            .font(.title)
-                        
-                    }.padding(.leading, 20)
+                        VStack(alignment: .leading){
 
-
-                    
-                    HStack{
-                        Text("Price: ")
-                        
-                        Text("$" + pricePlaceholder)
-                            .font(.title)
-                    }.padding(.leading, 20)
-                    
-                    HStack{
-                        Text("Price Opt: ")
-                        
-                        Text("$" + priceoptPlaceholder)
-                            .font(.title)
-                    }.padding(.leading, 20)
-                    
-                    if hiddenPlaceholder {
-
-                    
-                        HStack{
-                            Text("Company:    ")
-                            
-                            Text(companyPlaceholder)
+                            Text("Style Number: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
                                 .font(.title)
-                        }.padding(.leading, 20)
-                        
-                        HStack{
+                                .padding(.all,5)
+
+
+                            Text("Price: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
+                            Text("Price Opt: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
+                            Text("Company: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
                             Text("Company Style: ")
-                            
-                            Text(companystylePlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
                                 .font(.title)
-                        }.padding(.leading, 20)
+                                .padding(.all,5)
+
+                            Text("Style: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
+                            Text("Category: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
+                            Text("Note: ")
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .padding(.all,5)
+
+                        }.padding(.leading, 40)
                         
-                        HStack{
-                            Text("Style:          ")
-                            
-                            Text(stylePlaceholder)
+                        
+                        VStack(alignment: .leading){
+
+                            Text(descriptionPlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
                                 .font(.title)
-                        }.padding(.leading, 20)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text("$"+pricePlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text("$"+priceoptPlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text(companyPlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text(companystylePlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text(stylePlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text(categoryPlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+                            Text(notesPlaceholder)
+                                .foregroundColor(Color(red: 106/255, green: 83/255, blue: 17/255))
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.all,5)
+
+
+
+                            
+                        }
+
+                        
+                        
                     }
                     
-                    HStack{
-                        Text("Category:           ")
-                        
-                        Text(categoryPlaceholder)
-                            .font(.title)
-                    }.padding(.leading, 20)
-                    
-                    HStack{
-                        Text("Note:               ")
-                        
-                        Text(notesPlaceholder)
-                            .font(.title)
-                    }.padding(.leading, 20)
-
-
-
+ 
 
 
 
@@ -160,20 +229,9 @@ struct ProductDetails: View {
                 
             }
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-
-            
+        }.sheet(isPresented: $sendEmail){
+            SendEmailView(idPlaceholder: idPlaceholder)
         }
-        
     }
 }
 
