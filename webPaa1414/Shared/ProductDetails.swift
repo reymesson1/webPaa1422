@@ -72,62 +72,66 @@ struct ProductDetails: View {
                     HStack{
                         Text("Style Number: ")
                         
+                        
                         Text(descriptionPlaceholder)
                             .font(.title)
-                    }
+                        
+                    }.padding(.leading, 20)
+
+
                     
                     HStack{
                         Text("Price: ")
                         
-                        Text(pricePlaceholder)
+                        Text("$" + pricePlaceholder)
                             .font(.title)
-                    }
+                    }.padding(.leading, 20)
                     
                     HStack{
                         Text("Price Opt: ")
                         
-                        Text(priceoptPlaceholder)
+                        Text("$" + priceoptPlaceholder)
                             .font(.title)
-                    }
+                    }.padding(.leading, 20)
                     
                     if hiddenPlaceholder {
 
                     
                         HStack{
-                            Text("Company: ")
+                            Text("Company:    ")
                             
                             Text(companyPlaceholder)
                                 .font(.title)
-                        }
+                        }.padding(.leading, 20)
                         
                         HStack{
                             Text("Company Style: ")
                             
                             Text(companystylePlaceholder)
                                 .font(.title)
-                        }
+                        }.padding(.leading, 20)
                         
                         HStack{
-                            Text("Style: ")
+                            Text("Style:          ")
                             
                             Text(stylePlaceholder)
                                 .font(.title)
-                        }
+                        }.padding(.leading, 20)
                     }
                     
                     HStack{
-                        Text("Category: ")
+                        Text("Category:           ")
                         
                         Text(categoryPlaceholder)
                             .font(.title)
-                    }
+                    }.padding(.leading, 20)
                     
                     HStack{
-                        Text("Note: ")
+                        Text("Note:               ")
                         
                         Text(notesPlaceholder)
                             .font(.title)
-                    }
+                    }.padding(.leading, 20)
 
 
 
@@ -135,7 +139,9 @@ struct ProductDetails: View {
 
 
                     
-                }
+                }  .listStyle(SidebarListStyle())
+
+
                 
             }else{
                 

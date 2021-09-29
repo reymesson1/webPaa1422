@@ -43,6 +43,8 @@ struct ProductItem: View {
                         Image(uiImage: imageToShow)
                             .resizable()
                             .scaledToFill()
+                            .cornerRadius(14)
+                            .padding(.all, 10)
                             .animation(.default)
                             .frame(width: 100, height: 100)
                           .onAppear {
