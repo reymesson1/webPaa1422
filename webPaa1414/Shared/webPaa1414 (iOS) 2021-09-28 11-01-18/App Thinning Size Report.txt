@@ -1,0 +1,8 @@
+
+App Thinning Size Report for All Variants of webPaa1414 (iOS)
+
+Variant: webPaa1414-D8598732-5E1F-4473-82F3-3D8CF97DE02F.ipa
+Supported variant descriptors: [device: iPad6,8, os-version: 14.0], [device: iPhone8,1, os-version: 14.0], [device: iPad7,5, os-version: 14.0], [device: iPad5,3, os-version: 14.0], [device: iPad7,6, os-version: 14.0], [device: iPhone8,2, os-version: 14.0], [device: iPod9,1, os-version: 14.0], [device: iPad6,7, os-version: 14.0], [device: iPad5,4, os-version: 14.0], [device: iPad6,11, os-version: 14.0], [device: iPad5,1, os-version: 14.0], [device: iPad5,2, os-version: 14.0], [device: iPad7,12, os-version: 14.0], [device: iPad6,12, os-version: 14.0], [device: iPad7,11, os-version: 14.0], [device: iPad11,6, os-version: 14.0], [device: iPhone8,4, os-version: 14.0], and [device: iPad11,7, os-version: 14.0]
+App + On Demand Resources size: 13 MB compressed, 13.4 MB uncompressed
+App size: 13 MB compressed, 13.4 MB uncompressed
+On Demand Resources size: Zero KB compressed, Zero KB uncompressed

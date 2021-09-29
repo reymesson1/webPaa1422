@@ -20,7 +20,8 @@ class ViewModel: ObservableObject{
 
 
 //    let prefixUrl = "http://10.0.0.221:8085"
-    let prefixUrl = "http://143.198.171.44:8085"
+//    let prefixUrl = "http://143.198.171.44:8085"
+    let prefixUrl = "http://192.168.43.81:8085"
 
 
     init() {

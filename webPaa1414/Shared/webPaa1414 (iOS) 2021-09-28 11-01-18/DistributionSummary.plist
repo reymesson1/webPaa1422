@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>webPaa1414.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>43EF27D86DD005069198E3B87AA8B536C33B4814</string>
+				<key>dateExpires</key>
+				<string>6/24/22</string>
+				<key>type</key>
+				<string>Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>A7RABW8M5X.Amsel.webPaa1414</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>A7RABW8M5X</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>A7RABW8M5X.Amsel.webPaa1414</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>webPaa1414.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>f0402f27-e63f-4803-b3aa-cf11e469dea6</string>
+				<key>name</key>
+				<string>iOS Team Ad Hoc Provisioning Profile: Amsel.webPaa1414</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>A7RABW8M5X</string>
+				<key>name</key>
+				<string>Abdul Wahab El Haj Ibrahim</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
