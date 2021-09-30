@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         
-//        NavigationView{
+        NavigationView{
                             
             VStack {
                 newHeader()
@@ -74,7 +74,8 @@ struct ContentView: View {
                 }
 
             }.edgesIgnoringSafeArea(.all)
-        
+    }.navigationViewStyle(StackNavigationViewStyle())
+
     }
 }
 
@@ -289,10 +290,7 @@ struct newBody: View {
 
 
 struct newHeader: View {
-    
-    let storedName = UserDefaults.standard.object(forKey: "name")
-    let nameLabel = ""
-    
+        
     var body: some View {
 
         ZStack{

@@ -83,6 +83,18 @@ class ViewModel: ObservableObject{
 //            birthdayLabel.text = "Birthday: \(birthdayText.text!)"
     }
     
+    func deleteButton(_ sender: Any) {
+           
+           let storedName = UserDefaults.standard.object(forKey: "name")
+
+            UserDefaults.standard.removeObject(forKey: "name")
+
+           
+           if (storedName as? String) != nil {
+               UserDefaults.standard.removeObject(forKey: "name")
+           }
+    }
+    
     func createPosts(parameters: [String:Any]){
         
         guard let url = URL(string: "\(prefixUrl)/createpost") else{
@@ -500,14 +512,23 @@ class ViewModel: ObservableObject{
                     let result = try JSONDecoder().decode(DataModelLogin.self, from: data)
                     DispatchQueue.main.async {
 
+                        
+//                        if self.isLoggedTXT != "" {
+//
+//                        }
+                        
+                        
                         self.token = result.data[0].token
                     // self.defaults.set("token", forKey: result.data[0].token)
-                     print(result.data[0].token)
+                        print(result.data[0].token)
                         UserDefaults.standard.set(result.data[0].token, forKey: "name")
 
                         if(result.data[0].token.count>0){
                             self.isLogged=true
                         }
+                        
+                        
+                        
                     }
                 }else{
                     print("No data")

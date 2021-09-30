@@ -16,6 +16,11 @@ struct LoginView: View {
     @State var authenticateDidSuccedd: Bool = true
     @EnvironmentObject var viewModel : ViewModel
     @State var isLinkActive = false
+    
+    init(){
+        
+        
+    }
 
     var body: some View {
                     
@@ -35,6 +40,16 @@ struct LoginView: View {
                                 .offset(y: -10)
                                 .foregroundColor(.red)
                         }
+//                        if viewModel.isLoggedTXT != "" {
+//
+//                            ContentToggleValueView(username: $username, password: $password, favoritePlaceholder: $viewModel.isLogged)
+//
+//                        }else{
+////                            NavigationLink(destination: ContentView())
+////                            viewModel.
+//                            ContentToggleValueView(username: $username, password: $password, favoritePlaceholder: $viewModel.isLogged)
+//
+//                        }
                         ContentToggleValueView(username: $username, password: $password, favoritePlaceholder: $viewModel.isLogged)
                     }.frame(width: 300)
                     .padding()
@@ -56,36 +71,37 @@ struct ContentToggleValueView: View {
     @EnvironmentObject var viewModel : ViewModel
     @Binding var favoritePlaceholder : Bool
 
+    let isLoggedNew = true
     init(username: Binding<String>, password: Binding<String>,favoritePlaceholder: Binding<Bool>){
 
         self._username = username
         self._password = password
+//        self._favoritePlaceholder
         self._favoritePlaceholder = favoritePlaceholder
+
     }
 
     var body: some View {
 
         NavigationLink(destination: ContentView(), isActive: $favoritePlaceholder, label: {
 
-        Button(action:{
-            
-            let parameters: [String: Any] = ["username": username, "password": password]
-            viewModel.createPostsLogin(parameters: parameters)
-            if(viewModel.isLogged){
+            Button(action:{
                 
-                print("logged")
-                self.favoritePlaceholder = true
-                viewModel.isLoggedTXT = "true"
-                viewModel.saveButton("true")
-                UserDefaults.standard.set("true", forKey: "name")
-
+    //            viewModel.deleteButton("delete")
                 
-            }
+                let parameters: [String: Any] = ["username": username, "password": password]
+                viewModel.createPostsLogin(parameters: parameters)
+                if(viewModel.isLogged){
+                    
+                    print("logged")
+                    self.favoritePlaceholder = true
+                    viewModel.saveButton("true")                    
+                }
 
-        }, label:{
-            
-            LoginButton()
-        })
+            }, label:{
+                
+                LoginButton()
+            })
             
         })
 
