@@ -14,12 +14,13 @@ struct ContentView: View {
     var body: some View {
         
 //        NavigationView{
-                    
+                            
             VStack {
                 newHeader()
                     .frame(height:270)
                 
                 VStack{
+                    
                     
                     HStack{
 
@@ -288,6 +289,10 @@ struct newBody: View {
 
 
 struct newHeader: View {
+    
+    let storedName = UserDefaults.standard.object(forKey: "name")
+    let nameLabel = ""
+    
     var body: some View {
 
         ZStack{

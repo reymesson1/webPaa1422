@@ -27,6 +27,7 @@ struct LoginView: View {
                 
                     VStack{
                         HeaderImage()
+                        Text(viewModel.isLoggedTXT)
                         UsernameTextField(username: $username)
                         PasswordTextField(password: $password)
                         if viewModel.isNotLogged {
@@ -74,6 +75,10 @@ struct ContentToggleValueView: View {
                 
                 print("logged")
                 self.favoritePlaceholder = true
+                viewModel.isLoggedTXT = "true"
+                viewModel.saveButton("true")
+                UserDefaults.standard.set("true", forKey: "name")
+
                 
             }
 

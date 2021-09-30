@@ -17,16 +17,70 @@ class ViewModel: ObservableObject{
     @Published var token = ""
     @Published var isLogged = false
     @Published var isNotLogged = false
-
+    @Published var isLoggedTXT = ""
 
 //    let prefixUrl = "http://10.0.0.221:8085"
     let prefixUrl = "http://143.198.171.44:8085"
+//    let prefixUrl = "http://192.168.43.81:8085"
 
 
     init() {
         fetchPosts()
         fetchPostsCompanies()
         fetchPostsStyles()
+        viewDidLoad()
+    }
+    
+    func viewDidLoad() {
+            
+            let storedName = UserDefaults.standard.object(forKey: "name")
+//            let storedBirthday = UserDefaults.standard.object(forKey: "birthday")
+            
+            // Casting - as?  vs  as!  force casting
+        
+            
+            if let newName = storedName as? String {
+                isLoggedTXT = "\(newName)"
+                
+            }
+        
+            print(isLoggedTXT)
+        
+//            if storedName as! String == "" {
+//
+//                UserDefaults.standard.set("false", forKey: "name")
+//
+//            }
+        
+        
+//            if let newBirthday = storedBirthday as? String {
+//                birthdayLabel.text = "Birthday: \(newBirthday)"
+//            }
+            
+    }
+    
+    func saveButton(_ sender: Any) {
+        
+        let storedName = UserDefaults.standard.object(forKey: "name")
+//            let storedBirthday = UserDefaults.standard.object(forKey: "birthday")
+        
+        // Casting - as?  vs  as!  force casting
+    
+        
+        if let newName = storedName as? String {
+            isLoggedTXT = "\(newName)"
+            
+        }
+    
+        print( "from token" +  isLoggedTXT)
+
+            
+//            UserDefaults.standard.set("true", forKey: "name")
+//            UserDefaults.standard.set(birthdayText.text!, forKey: "birthday")
+            
+            
+//            nameLabel.text = "Name: \(nameText.text!)"
+//            birthdayLabel.text = "Birthday: \(birthdayText.text!)"
     }
     
     func createPosts(parameters: [String:Any]){
@@ -449,6 +503,8 @@ class ViewModel: ObservableObject{
                         self.token = result.data[0].token
                     // self.defaults.set("token", forKey: result.data[0].token)
                      print(result.data[0].token)
+                        UserDefaults.standard.set(result.data[0].token, forKey: "name")
+
                         if(result.data[0].token.count>0){
                             self.isLogged=true
                         }
