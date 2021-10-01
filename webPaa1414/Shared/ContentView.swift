@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         
-//        NavigationView{
+        NavigationView{
                     
             VStack {
                 newHeader()
@@ -73,6 +73,8 @@ struct ContentView: View {
                 }
 
             }.edgesIgnoringSafeArea(.all)
+            
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }
@@ -288,6 +290,9 @@ struct newBody: View {
 
 
 struct newHeader: View {
+    
+    @State var favoritePlaceholder : Bool = false
+
     var body: some View {
 
         ZStack{
@@ -353,7 +358,28 @@ struct newHeader: View {
                         Spacer()
                     }
                 }
-                Spacer()
+                Group{
+                    VStack{
+                        Spacer()
+                        NavigationLink(" ", destination: EmptyView())
+                        NavigationLink("", destination: EmptyView())
+//                        NavigationLink("Logout", destination: LoginView())
+                        NavigationLink(destination: LoginView(), isActive: $favoritePlaceholder, label: {
+
+                            Button(action:{
+                                print("press")
+                                self.favoritePlaceholder = true
+                                UserDefaults.standard.removeObject(forKey: "name")
+                            }, label:{
+                                Text("Logout")
+                            })
+                            
+                        }).padding(.bottom, 120)
+
+                        NavigationLink("", destination: EmptyView())
+
+                    }
+                }
             }
         }
 

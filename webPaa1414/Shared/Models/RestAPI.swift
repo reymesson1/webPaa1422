@@ -27,6 +27,8 @@ class ViewModel: ObservableObject{
         fetchPosts()
         fetchPostsCompanies()
         fetchPostsStyles()
+//        UserDefaults.standard.removeObject(forKey: "name")
+
     }
     
     func createPosts(parameters: [String:Any]){
@@ -447,8 +449,9 @@ class ViewModel: ObservableObject{
                     DispatchQueue.main.async {
 
                         self.token = result.data[0].token
-                    // self.defaults.set("token", forKey: result.data[0].token)
-                     print(result.data[0].token)
+                        // self.defaults.set("token", forKey: result.data[0].token)
+                        print(result.data[0].token)
+                        UserDefaults.standard.set(result.data[0].token, forKey: "name")
                         if(result.data[0].token.count>0){
                             self.isLogged=true
                         }

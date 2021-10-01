@@ -9,9 +9,23 @@ import SwiftUI
 
 @main
 struct webPaa1414App: App {
+    
+    let storedName = UserDefaults.standard.object(forKey: "name")
+    var nameLabel: String = ""
+    
+    init(){
+        
+        if let newName = storedName as? String {
+            nameLabel = "\(newName)"
+                    
+        }
+        
+    }
+    
     var body: some Scene {
+    
         WindowGroup {
-            if true {
+            if nameLabel == "" {
                 
                 LoginView().environmentObject(ViewModel())
             }else{
