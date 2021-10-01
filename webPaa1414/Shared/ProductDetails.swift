@@ -284,13 +284,9 @@ struct ProductDetailsListView: View {
         VStack{
             
             ForEach(viewModel.getImageItems(), id: \.self.id) { imageVM in
-                
-//                  ProductItemList(imagePlaceholder: imageVM.placeholder, loader: imageVM.loader)
-                
+                                
                 ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder: imageVM.companystyleData, stylePlaceholder: imageVM.styleData, categoryPlaceholder: imageVM.categoryData, notesPlaceholder: imageVM.categoryData, pricePlaceholder: imageVM.priceData, priceoptPlaceholder: imageVM.priceoptData, hiddenPlaceholder: imageVM.hiddenData, favoritePlaceholder: imageVM.favoriteData, imagesPlaceholder: imageVM.imagesData, loader: imageVM.loader)
 
-
-//                ProductItem(imagePlaceholder: imageVM.placeholder, idPlaceholder: imageVM.idData, descriptionPlaceholder: imageVM.descriptionData, companyPlaceholder: imageVM.companyData, companystylePlaceholder:
                 
             }
             

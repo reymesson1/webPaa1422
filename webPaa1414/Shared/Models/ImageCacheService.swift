@@ -36,7 +36,7 @@ final class ImageCacheServiceAdapter: ImageCacheService {
       imageDownloadQueue.async { [weak self] in
         guard
           let self = self,
-          let imageURL = URL(string: "\(self.domainImagePath)/\(url)"),
+          let imageURL = URL(string: "\(self.domainImagePath)/output-\(url)"),
           let imageData = try? Data(contentsOf: imageURL)
         else {
           completion(nil)

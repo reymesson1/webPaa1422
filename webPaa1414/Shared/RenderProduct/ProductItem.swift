@@ -38,7 +38,7 @@ struct ProductItem: View {
             
         NavigationLink(destination: ProductDetails(imagePlaceholder: imagePlaceholder, idPlaceholder: idPlaceholder, descriptionPlaceholder: descriptionPlaceholder, companyPlaceholder: companyPlaceholder, companystylePlaceholder: companystylePlaceholder, stylePlaceholder: stylePlaceholder, categoryPlaceholder: categoryPlaceholder, notesPlaceholder: notesPlaceholder, pricePlaceholder: pricePlaceholder, priceoptPlaceholder: priceoptPlaceholder, hiddenPlaceholder: hiddenPlaceholder, imagesPlaceholder: imagesPlaceholder, favoritePlaceholder: favoritePlaceholder, loader: loader), label:{
                 VStack{
-                    VStack{
+                    ZStack{
                         
                         Image(uiImage: imageToShow)
                             .resizable()
@@ -52,19 +52,19 @@ struct ProductItem: View {
                                 self.image = $0
                             }
                           }
-                          Text(descriptionPlaceholder.uppercased()).bold()
-
                         
-//                        Text("   ")
-//                        
-//                        VStack(alignment: .leading, spacing: 5){
-//                                                        
-//                            Text(descriptionPlaceholder.uppercased()).bold()
-//                            Text(companyPlaceholder.lowercased())
-//                            Text("companystyle").font(.caption)
-//
-//                        
-//                        }.padding()
+                        VStack{
+
+                            Spacer()
+                            Text(descriptionPlaceholder.uppercased()).bold()
+                                .font(.system(size: 15))
+
+                        }
+                        .background(Color.gray)
+                        .cornerRadius(20)
+                        .padding()
+                        .frame(width: 30, height: 30, alignment: .center)
+                        
                     }
                 }
             })

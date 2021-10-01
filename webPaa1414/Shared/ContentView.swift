@@ -101,8 +101,19 @@ struct newBody: View {
                             .font(.title)
                             .foregroundColor(Color(.white))
                         
-                            Text(item.category)
-                            .fontWeight(.bold)
+//                            Text(item.category)
+//                            .fontWeight(.bold)
+                            
+                            VStack{
+
+                                Spacer()
+                                Text(item.category)
+                                .fontWeight(.bold)
+                                
+                            }
+                            
+//                            .background(Color: Color.gray)
+                            
                             
                         }
                         .frame(height:200)
