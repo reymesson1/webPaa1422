@@ -38,6 +38,7 @@ struct LoginView: View {
                     }.frame(width: 300)
                     .padding()
             }.edgesIgnoringSafeArea(.all)
+//        }
         }.navigationViewStyle(StackNavigationViewStyle())
     }
 }

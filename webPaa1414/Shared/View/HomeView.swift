@@ -28,7 +28,7 @@ struct HomeView: View {
             .navigationBarTitle("Posts")
             .navigationBarItems(trailing: plusButton)
             
-            
+//        }
         }.navigationViewStyle(StackNavigationViewStyle())
         
     }
