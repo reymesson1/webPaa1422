@@ -371,7 +371,9 @@ struct newHeader: View {
                                 self.favoritePlaceholder = true
                                 UserDefaults.standard.removeObject(forKey: "name")
                             }, label:{
-                                Text("Logout")
+//                                Text("Logout  ")
+                                Image(systemName: "eye.fill")
+
                             })
                             
                         }).padding(.bottom, 120)
@@ -398,7 +400,10 @@ struct ContentToggleView: View {
     init(favoritePlaceholder: Binding<Bool>){
 
         self._favoritePlaceholder = favoritePlaceholder
+
+        UserDefaults.standard.removeObject(forKey: "name")
     }
+
 
     var body: some View {
 
